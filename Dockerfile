@@ -89,7 +89,7 @@ RUN wget -q https://github.com/elixir-lang/elixir/releases/download/v1.3.1/Preco
 RUN /usr/local/bin/mix local.hex --force && \
     /usr/local/bin/mix local.rebar --force
 
-RUN /usr/local/bin/mix archive.install --force https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez
+RUN /usr/local/bin/mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez
 
 RUN npm cache clean
 RUN npm install -g n
@@ -106,8 +106,6 @@ WORKDIR /home/app/elixirgarden_api
 COPY elixirgarden_api /home/app/elixirgarden_api
 USER root
 RUN chown -R app:app /home/app/elixirgarden_api
-USER app
-RUN HOME=/home/app/elixirgarden_api bower install --allow-root --config.interactive=false && mkdir -p assets/static/fonts && cp -v bower_components/bootstrap/dist/fonts/* assets/static/fonts/
 
 USER root
 WORKDIR /
