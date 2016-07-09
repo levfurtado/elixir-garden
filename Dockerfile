@@ -95,7 +95,7 @@ RUN npm cache clean
 RUN npm install -g n
 RUN n stable
 RUN curl -L https://npmjs.org/install.sh | sh
-RUN npm install -g brunch jam babel babel-brunch
+RUN npm install -g brunch jam babel babel-brunch bower
 
 ENV APP_UID 1000
 ENV APP_GID 1000

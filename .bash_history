@@ -12,7 +12,7 @@ elixir -v
 ls
 cd elixirgarden_api/
 mix deps.get
-mix phoenix.new -no-brunch phoenix_trello
+mix phoenix.new -no-brunch elixir_garden
 ls
 mix phoenix.new -no-brunch elixir_garden
 npm init
@@ -69,4 +69,63 @@ git add ./
 git add -all
 git add --all
 git commit -a
+exit
+ld
+ls
+cd elixirgarden_api/
+mix deps.get
+cd elixir_garden/
+ls
+mix deps.get
+ls
+mix deps.get
+mix local.hex
+y
+mix ecto.create
+exut
+exit
+elixir -v
+mix phoenix.new -v
+ls
+mix phoenix.new elixirgarden_api
+mix ecto.create
+cd elixirgarden_api/
+mix ecto.create
+psql status
+sudo su - postgres
+su - postgres
+exit
+mix do deps.get, compile
+cd elixirgarden_api/
+mix do deps.get, compile
+mix phoenix.server
+mix do deps.get, compile
+mix phoenix.server
+mix phoenix.server
+psql -v
+psql
+psql elixirgarden-dev
+psql postgres
+docker-enter elixirgarden_postgres_1
+psql -h elixirgarden_postgres_1 -u postgres -w
+psql -h elixirgarden_postgres_1 -U postgres -w
+psql -h elixirgarden_postgres_1 -U postgres -W
+psql -h elixirgarden_postgres_1 -U postgres -W
+psql -h elixirgarden_postgres_1 -U postgres -W
+psql -h elixirgarden_postgres_1 -U 
+psql -h elixirgarden_postgres_1 -U postgres 
+psql -h elixirgarden_postgres_1 -U postgres 
+psql -h elixirgarden_postgres_1 -U postgres -W
+psql -h elixirgarden_postgres_1 -U app -w
+psql -h elixirgarden_postgres_1 -U app -W
+psql -h elixirgarden_postgres_1 -U app -W
+psql -h elixirgarden_postgres_1 -U app -W
+psql -h elixirgarden_postgres_1 -U app -W
+psql -h elixirgarden_postgres_1 -U app -W
+psql -h elixirgarden_postgres_1 -U app
+psql -h elixirgarden_postgres_1 -U app
+psql -h elixirgarden_postgres_1 -U postgres
+psql -h elixirgarden-dev -U app
+psql -h elixirgarden_postgres_1 -U postgres
+psql -h elixirgarden-api -U app
 exit
