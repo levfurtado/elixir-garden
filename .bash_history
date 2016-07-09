@@ -129,3 +129,9 @@ psql -h elixirgarden-dev -U app
 psql -h elixirgarden_postgres_1 -U postgres
 psql -h elixirgarden-api -U app
 exit
+psql -h elixirgarden-api -U app
+psql -h elixirgarden_postgres_1 -U app
+psql -h elixirgarden_postgres_1 -U root
+psql -h elixirgarden_postgres_1 -U root
+psql -h postgres_1 -U app
+exit
