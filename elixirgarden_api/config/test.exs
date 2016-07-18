@@ -14,6 +14,6 @@ config :elixirgarden_api, ElixirgardenApi.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "elixirgarden",
   password: "elixirgarden",
-  database: "elixirgarden-test",
+  database: "elixirgarden_api_test",
   hostname: "postgres",
   pool: Ecto.Adapters.SQL.Sandbox

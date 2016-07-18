@@ -1,8 +1,0 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h2>Individual Node</h2>
-      <p>This is someting being passed into the url <b><%= @node %></b></p>
-    </div>
-  </div>
-</div>

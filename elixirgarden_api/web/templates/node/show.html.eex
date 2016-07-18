@@ -1,0 +1,38 @@
+<h2>Show node</h2>
+
+<ul>
+
+  <li>
+    <strong>Node:</strong>
+    <%= @node.node_id %>
+  </li>
+
+  <li>
+    <strong>Io role:</strong>
+    <%= @node.io_role %>
+  </li>
+
+  <li>
+    <strong>Group:</strong>
+    <%= @node.group %>
+  </li>
+
+  <li>
+    <strong>Value:</strong>
+    <%= @node.value %>
+  </li>
+
+  <li>
+    <strong>Plant:</strong>
+    <%= @node.plant %>
+  </li>
+
+  <li>
+    <strong>Location:</strong>
+    <%= @node.location %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: node_path(@conn, :edit, @node) %>
+<%= link "Back", to: node_path(@conn, :index) %>

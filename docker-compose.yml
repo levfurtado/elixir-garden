@@ -20,7 +20,7 @@ services:
   postgres:
     build: ./docker/elixirgarden-postgres
     environment:
-      - DB_NAME=elixirgarden-dev,elixirgarden-test,elixirgarden-production
+      - DB_NAME=elixirgarden_api_dev,elixirgarden_api_test,elixirgarden_api_production
       - DB_USER=elixirgarden
       - DB_PASS=elixirgarden
     ports:

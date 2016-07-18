@@ -36,7 +36,7 @@ defmodule ElixirgardenApi.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_elixirgarden_api_key",
-    signing_salt: "6X+Yzsk1"
+    signing_salt: "IGkRZXQk"
 
   plug ElixirgardenApi.Router
 end

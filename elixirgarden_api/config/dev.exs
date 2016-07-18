@@ -38,6 +38,6 @@ config :elixirgarden_api, ElixirgardenApi.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "elixirgarden",
   password: "elixirgarden",
-  database: "elixirgarden-dev",
+  database: "elixirgarden_api_dev",
   hostname: "postgres",
   pool_size: 10

@@ -12,8 +12,7 @@ config :elixirgarden_api,
 # Configures the endpoint
 config :elixirgarden_api, ElixirgardenApi.Endpoint,
   url: [host: "localhost"],
-  root: Path.dirname(__DIR__),
-  secret_key_base: "VV+FOIZs4Loj1IuxskhsXknJ3bshv3i+1W3/B4D+DS0c+/0Qif7sBNqPDeyrzJgW",
+  secret_key_base: "nmlk6kI7jD23Qiq14xZ/A4Ku0h22UYCPDwaR4HarIwxv2fpkA1NJoUeAMr2QzWw0",
   render_errors: [view: ElixirgardenApi.ErrorView, accepts: ~w(html json)],
   pubsub: [name: ElixirgardenApi.PubSub,
            adapter: Phoenix.PubSub.PG2]
@@ -26,8 +25,3 @@ config :logger, :console,
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
-
-# Configure phoenix generators
-config :phoenix, :generators,
-  migration: true,
-  binary_id: false

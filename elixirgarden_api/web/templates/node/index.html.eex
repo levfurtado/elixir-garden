@@ -1,0 +1,36 @@
+<h2>Listing nodes</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Node</th>
+      <th>Io role</th>
+      <th>Group</th>
+      <th>Value</th>
+      <th>Plant</th>
+      <th>Location</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for node <- @nodes do %>
+    <tr>
+      <td><%= node.node_id %></td>
+      <td><%= node.io_role %></td>
+      <td><%= node.group %></td>
+      <td><%= node.value %></td>
+      <td><%= node.plant %></td>
+      <td><%= node.location %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: node_path(@conn, :show, node), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: node_path(@conn, :edit, node), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: node_path(@conn, :delete, node), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New node", to: node_path(@conn, :new) %>
