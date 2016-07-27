@@ -12,12 +12,6 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :io_role, class: "control-label" %>
-    <%= checkbox f, :io_role, class: "form-control" %>
-    <%= error_tag f, :io_role %>
-  </div>
-
-  <div class="form-group">
     <%= label f, :group, class: "control-label" %>
     <%= text_input f, :group, class: "form-control" %>
     <%= error_tag f, :group %>
@@ -27,6 +21,24 @@
     <%= label f, :value, class: "control-label" %>
     <%= number_input f, :value, step: "any", class: "form-control" %>
     <%= error_tag f, :value %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :io_role, class: "control-label" %>
+    <%= checkbox f, :io_role, class: "form-control" %>
+    <%= error_tag f, :io_role %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :location_x, class: "control-label" %>
+    <%= number_input f, :location_x, class: "form-control" %>
+    <%= error_tag f, :location_x %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :location_y, class: "control-label" %>
+    <%= number_input f, :location_y, class: "form-control" %>
+    <%= error_tag f, :location_y %>
   </div>
 
   <div class="form-group">

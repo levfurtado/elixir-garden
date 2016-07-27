@@ -7,8 +7,9 @@ defmodule ElixirgardenApi.Repo.Migrations.CreateNode do
       add :io_role, :boolean, default: false, null: false
       add :group, :string
       add :value, :float
-      add :plant, :integer
-      add :location, {:array, :string}
+      add :plant, :integer, default: 0
+      add :location_x, :integer
+      add :location_y, :integer
 
       timestamps()
     end

@@ -8,7 +8,8 @@
       <th>Group</th>
       <th>Value</th>
       <th>Plant</th>
-      <th>Location</th>
+      <th>Location X</th>
+      <th>Location Y</th>
 
       <th></th>
     </tr>
@@ -21,7 +22,8 @@
       <td><%= node.group %></td>
       <td><%= node.value %></td>
       <td><%= node.plant %></td>
-      <td><%= node.location %></td>
+      <td><%= node.location_x %></td>
+      <td><%= node.location_y %></td>
 
       <td class="text-right">
         <%= link "Show", to: node_path(@conn, :show, node), class: "btn btn-default btn-xs" %>
