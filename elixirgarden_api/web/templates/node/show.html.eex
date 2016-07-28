@@ -18,6 +18,11 @@
   </li>
 
   <li>
+    <strong>Function:</strong>
+    <%= @node.function %>
+  </li>
+
+  <li>
     <strong>Value:</strong>
     <%= @node.value %>
   </li>
