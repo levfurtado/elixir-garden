@@ -24,4 +24,17 @@ defmodule ElixirgardenApi.Router do
   # scope "/api", ElixirgardenApi do
   #   pipe_through :api
   # end
-end
+
+  scope path: "/api" do
+    pipe_through :api
+
+    scope "/mob" do
+      forward "/", ElixirgardenApi.APIs.Homepage
+    end
+
+    scope "/mob2" do
+      forward "/", ElixirgardenApi.APIs.Versioning.Path
+    end
+  end
+
+  end

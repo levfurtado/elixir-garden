@@ -12,6 +12,7 @@ config :elixirgarden_api,
 # Configures the endpoint
 config :elixirgarden_api, ElixirgardenApi.Endpoint,
   url: [host: "localhost"],
+  root: Path.dirname(__DIR__),
   secret_key_base: "nmlk6kI7jD23Qiq14xZ/A4Ku0h22UYCPDwaR4HarIwxv2fpkA1NJoUeAMr2QzWw0",
   render_errors: [view: ElixirgardenApi.ErrorView, accepts: ~w(html json)],
   pubsub: [name: ElixirgardenApi.PubSub,
