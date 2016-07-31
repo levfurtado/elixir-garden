@@ -16,8 +16,11 @@ defmodule ElixirgardenApi.Router do
   scope "/", ElixirgardenApi do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
     resources "/nodes", NodeController
+
+    get "/", PageController, :index
+    get "/plant", PlantController, :index
+    get "/plant/:id", PlantController, :show
   end
 
   # Other scopes may use custom stacks.
