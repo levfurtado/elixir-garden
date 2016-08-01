@@ -19,12 +19,13 @@ defmodule ElixirgardenApi.Router do
     resources "/nodes", NodeController
 
     get "/", PageController, :index
-    get "/plant", PlantController, :index
-    get "/plant/:id", PlantController, :show
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", ElixirgardenApi do
-  #   pipe_through :api
-  # end
+  scope "/api", ElixirgardenApi do
+    pipe_through :api
+
+    resources "/plants", PlantController
+  end
+
 end

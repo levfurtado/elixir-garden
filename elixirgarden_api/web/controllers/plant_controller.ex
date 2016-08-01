@@ -1,12 +1,15 @@
 defmodule ElixirgardenApi.PlantController do
   use ElixirgardenApi.Web, :controller
 
-  def index(conn, _params) do
-    render conn, "index.html"
-  end
+  alias ElixirgardenApi.Repo
+  alias ElixirgardenApi.Node
 
-  def show(conn, %{"id" => id}) do
-    render conn, "show.html", id: id
+  plug :action
+
+  def index(conn, _params) do
+    #eventually needs to query the db for plants
+    plants = Repo.all(Node)
+    render conn, plants: plants
   end
 
 end
