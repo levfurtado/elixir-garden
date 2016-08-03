@@ -17,9 +17,10 @@ defmodule ElixirgardenApi.Node do
     timestamps()
   end
 
-  def plant(query, id) do
-    from n in query,
-    where: n.plant_id == ^id
+  def plant(id) do
+    from n in "nodes",
+    where: n.plant_id == ^id,
+    select: n.plant_id
   end
 
   @doc """

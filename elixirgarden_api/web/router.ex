@@ -26,6 +26,7 @@ defmodule ElixirgardenApi.Router do
     pipe_through :api
 
     resources "/plants", PlantController
+    get "/plant/:plant_id", PlantController
   end
 
 end

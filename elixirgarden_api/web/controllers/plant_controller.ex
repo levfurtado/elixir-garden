@@ -12,4 +12,9 @@ defmodule ElixirgardenApi.PlantController do
     render conn, plants: plants
   end
 
+  def show(conn, %{"plant_id" => plant_id}) do
+    plants = Repo.all(Node)
+    render conn, plants: plants
+  end
+
 end

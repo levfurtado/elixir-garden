@@ -5,4 +5,8 @@ defmodule ElixirgardenApi.PlantView do
     plants
   end
 
+  def render("index.json", %{plants: plants}) do
+    plants
+  end
+
 end
