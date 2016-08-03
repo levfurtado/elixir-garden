@@ -2,6 +2,7 @@ defmodule ElixirgardenApi.Node do
   use Ecto.Schema
 
   import Ecto.Changeset
+  import Ecto.Query
 
   schema "nodes" do
     field :node_id, :integer
@@ -9,11 +10,16 @@ defmodule ElixirgardenApi.Node do
     field :group, :string
     field :function, :string
     field :value, :float
-    field :plant, :integer, default: 0
+    field :plant_id, :integer, default: 0
     field :location_x, :integer
     field :location_y, :integer
 
     timestamps()
+  end
+
+  def plant(query, id) do
+    from n in query,
+    where: n.plant_id == ^id
   end
 
   @doc """
@@ -21,7 +27,7 @@ defmodule ElixirgardenApi.Node do
   """
   def changeset(node, params \\ %{}) do
     node
-    |> cast(params, [:node_id, :io_role, :group, :function, :value, :plant, :location_x, :location_y])
+    |> cast(params, [:node_id, :io_role, :group, :function, :value, :plant_id, :location_x, :location_y])
     |> validate_required([:node_id, :io_role, :group, :function, :value, :location_x, :location_y])
   end
 end

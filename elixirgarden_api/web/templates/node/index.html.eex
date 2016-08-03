@@ -23,7 +23,7 @@
       <td><%= node.group %></td>
       <td><%= node.function %></td>
       <td><%= node.value %></td>
-      <td><%= node.plant %></td>
+      <td><%= node.plant_id %></td>
       <td><%= node.location_x %></td>
       <td><%= node.location_y %></td>
 

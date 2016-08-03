@@ -7,7 +7,7 @@ defmodule ElixirgardenApi.PlantController do
   plug :action
 
   def index(conn, _params) do
-    #eventually needs to query the db for plants
+    #eventually needs to query the db for plants the right way
     plants = Repo.all(Node)
     render conn, plants: plants
   end

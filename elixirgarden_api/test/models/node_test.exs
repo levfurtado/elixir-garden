@@ -3,7 +3,7 @@ defmodule ElixirgardenApi.NodeTest do
 
   alias ElixirgardenApi.Node
 
-  @valid_attrs %{group: "some content", function: "squad", io_role: true, location_x: 1, location_y: 1, node_id: 42, plant: 42, value: "120.5"}
+  @valid_attrs %{group: "some content", function: "squad", io_role: true, location_x: 1, location_y: 1, node_id: 42, plant_id: 42, value: "120.5"}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

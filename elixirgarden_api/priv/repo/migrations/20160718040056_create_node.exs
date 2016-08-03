@@ -8,7 +8,7 @@ defmodule ElixirgardenApi.Repo.Migrations.CreateNode do
       add :group, :string
       add :function, :string
       add :value, :float
-      add :plant, :integer, default: 0
+      add :plant_id, :integer, default: 0
       add :location_x, :integer
       add :location_y, :integer
 

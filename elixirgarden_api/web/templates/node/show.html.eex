@@ -29,7 +29,7 @@
 
   <li>
     <strong>Plant:</strong>
-    <%= @node.plant %>
+    <%= @node.plant_id %>
   </li>
 
   <li>

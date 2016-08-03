@@ -48,9 +48,9 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :plant, class: "control-label" %>
-    <%= number_input f, :plant, class: "form-control" %>
-    <%= error_tag f, :plant %>
+    <%= label f, :plant_id, class: "control-label" %>
+    <%= number_input f, :plant_id, class: "form-control" %>
+    <%= error_tag f, :plant_id %>
   </div>
 
   <div class="form-group">
