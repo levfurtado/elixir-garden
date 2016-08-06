@@ -1,12 +1,23 @@
 defmodule ElixirgardenApi.PlantView do
   use ElixirgardenApi.Web, :view
 
-  def render("index.json", %{plants: plants}) do
-    plants
-  end
+  alias ElixirgardenApi.PlantView
 
   def render("index.json", %{plants: plants}) do
-    plants
+    %{data: render_many(plants, PlantView, "plant.json")}
+  end
+
+  def render("show.json", %{plants: plants}) do
+    %{data: render_many(plants, PlantView, "plant.json")}
+    # plants
+  end
+
+  def render("plant.json", %{plant: plant}) do
+      %{
+        plant_id: plant.plant_id,
+        group: plant.group,
+        node_id: plant.node_id
+      }
   end
 
 end

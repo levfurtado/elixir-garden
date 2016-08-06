@@ -25,8 +25,8 @@ defmodule ElixirgardenApi.Router do
   scope "/api", ElixirgardenApi do
     pipe_through :api
 
-    resources "/plants", PlantController
-    get "/plant/:plant_id", PlantController
+    resources "/plant", PlantController, except: [:new, :edit, :show]
+    get "/plant/:plant_id", PlantController, :show
   end
 
 end

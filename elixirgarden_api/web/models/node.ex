@@ -20,7 +20,7 @@ defmodule ElixirgardenApi.Node do
   def plant(id) do
     from n in "nodes",
     where: n.plant_id == ^id,
-    select: n.plant_id
+    select: { n.node_id, n.plant_id, n.group }
   end
 
   @doc """
