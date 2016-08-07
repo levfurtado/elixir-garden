@@ -16,7 +16,8 @@ defmodule ElixirgardenApi.PlantView do
       %{
         plant_id: plant.plant_id,
         group: plant.group,
-        node_id: plant.node_id
+        node_id: plant.node_id,
+        io_role: plant.io_role
       }
   end
 

@@ -4,6 +4,8 @@ defmodule ElixirgardenApi.Node do
   import Ecto.Changeset
   import Ecto.Query
 
+  alias ElixirgardenApi.Node
+
   schema "nodes" do
     field :node_id, :integer
     field :io_role, :boolean, default: false
@@ -17,10 +19,19 @@ defmodule ElixirgardenApi.Node do
     timestamps()
   end
 
-  def plant(id) do
-    from n in "nodes",
-    where: n.plant_id == ^id,
-    select: { n.node_id, n.plant_id, n.group }
+  def plant(query, id) do
+    from n in query,
+    where: n.plant_id == ^id
+  end
+
+  def outputNodes(query) do
+    from n in Node,
+    where: n.io_role == true
+  end
+
+  def inputNodes(query) do
+    from n in Node,
+    where: n.io_role == false
   end
 
   @doc """

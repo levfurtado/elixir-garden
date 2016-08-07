@@ -1,5 +1,6 @@
 defmodule ElixirgardenApi.PlantController do
   use ElixirgardenApi.Web, :controller
+  import Ecto.Query
 
   alias ElixirgardenApi.Repo
   alias ElixirgardenApi.Node
@@ -17,7 +18,8 @@ defmodule ElixirgardenApi.PlantController do
     IO.puts plant_id
     {int_plant_id, _ } = Integer.parse(plant_id)
     IO.puts int_plant_id
-    plants = Repo.all(Node.plant(int_plant_id))
+    # plants = Repo.all(from n in Node, where: n.plant_id == ^plant_id)
+    plants = Node |> Node.plant(plant_id) |> Repo.all
     render conn, plants: plants
   end
 
