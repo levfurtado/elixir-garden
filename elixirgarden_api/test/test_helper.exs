@@ -5,7 +5,7 @@ defmodule ElixirgardenApi.Case do
   alias ElixirgardenApi.Repo
 
   setup do
-    SQL.begin_test_transaction(Repo)
+    # SQL.begin_test_transaction(Repo)
 
     on_exit fn ->
       SQL.rollback_test_transaction(Repo)

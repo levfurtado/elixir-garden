@@ -21,7 +21,8 @@ defmodule ElixirgardenApi.Node do
 
   def plant(query, id) do
     from n in query,
-    where: n.plant_id == ^id
+    where: n.plant_id == ^id,
+    order_by: [desc: n.updated_at]
   end
 
   def outputNodes(query) do
