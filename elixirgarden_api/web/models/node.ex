@@ -35,6 +35,18 @@ defmodule ElixirgardenApi.Node do
     where: n.io_role == false
   end
 
+  def singleMostRecent(query) do
+    from n in Node,
+    distinct: n.group,
+    order_by: [desc: n.inserted_at]
+  end
+
+  def mostRecentByMinute(query, minutes) do
+    utcDateTime = :calendar.universal_time()
+    from n in Node,
+    where: n.updated_at > datetime_add(type(^utcDateTime, :datetime), ^(-1 * minutes), "minute")
+  end
+
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
