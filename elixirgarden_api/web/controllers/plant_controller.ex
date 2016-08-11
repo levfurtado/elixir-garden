@@ -10,14 +10,11 @@ defmodule ElixirgardenApi.PlantController do
   def index(conn, _params) do
     #eventually needs to query the db for plants the right way
     plants = Repo.all(Node)
-    IO.puts "ran"
     render conn, plants: plants
   end
 
   def show(conn, %{"plant_id" => plant_id}) do
-    IO.puts plant_id
     {int_plant_id, _ } = Integer.parse(plant_id)
-    IO.puts int_plant_id
     # plants = Repo.all(from n in Node, where: n.plant_id == ^plant_id)
     plants = Node |> Node.plant(plant_id) |> Repo.all
     render conn, plants: plants

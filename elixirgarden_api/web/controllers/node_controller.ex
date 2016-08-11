@@ -3,9 +3,11 @@ defmodule ElixirgardenApi.NodeController do
 
   alias ElixirgardenApi.Node
 
+  plug :action
+
   def index(conn, _params) do
     nodes = Repo.all(Node)
-    render(conn, "index.html", nodes: nodes)
+    render(conn, :index, nodes: nodes)
   end
 
   def new(conn, _params) do
@@ -28,7 +30,7 @@ defmodule ElixirgardenApi.NodeController do
 
   def show(conn, %{"id" => id}) do
     node = Repo.get!(Node, id)
-    render(conn, "show.html", node: node)
+    render(conn, :show, node: node)
   end
 
   def edit(conn, %{"id" => id}) do

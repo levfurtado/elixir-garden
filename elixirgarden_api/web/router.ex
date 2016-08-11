@@ -24,6 +24,9 @@ defmodule ElixirgardenApi.Router do
   # Other scopes may use custom stacks.
   scope "/api", ElixirgardenApi do
     pipe_through :api
+    resources "/nodes", NodeController, except: [:new, :edit, :show]
+    get "/nodes/:id", NodeController, :show
+    # get "/", NodeController, :index
 
     resources "/plants", PlantController, except: [:new, :edit, :show]
     get "/plants/:plant_id", PlantController, :show
