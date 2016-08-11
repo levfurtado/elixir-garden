@@ -21,9 +21,11 @@ defmodule ElixirgardenApi.ConnCase do
       use Phoenix.ConnTest
 
       alias ElixirgardenApi.Repo
+      alias ElixirgardenApi.Node
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
+      import ElixirgardenApi.Factory
 
       import ElixirgardenApi.Router.Helpers
 
