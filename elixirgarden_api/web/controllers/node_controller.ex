@@ -3,8 +3,6 @@ defmodule ElixirgardenApi.NodeController do
 
   alias ElixirgardenApi.Node
 
-  plug :action
-
   def index(conn, _params) do
     nodes = Repo.all(Node)
     render(conn, :index, nodes: nodes)

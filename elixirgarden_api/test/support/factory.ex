@@ -8,7 +8,7 @@ defmodule ElixirgardenApi.Factory do
       plant_id: 1,
       group: "Temperature",
       function: "Soil Temperature",
-      value: 1,
+      value: 1.0,
       location_x: 1,
       location_y: 1
     }
