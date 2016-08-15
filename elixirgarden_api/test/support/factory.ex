@@ -18,7 +18,7 @@ defmodule ElixirgardenApi.Factory do
     %ElixirgardenApi.Node{
       node_id: 2,
       io_role: true,
-      plant_id:h 2,
+      plant_id: 2,
       group: "pH",
       function: "Run off pH",
       value: 2.0,

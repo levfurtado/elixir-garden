@@ -13,7 +13,7 @@ defmodule ElixirgardenApi.ApiPlantControllerTest do
       "plants" => [%{
         "plant_id" => plant.plant_id,
         "io_role" => plant.io_role,
-        "plant_id" => plant.plant_id,
+        "node_id" => plant.node_id,
         "group" => plant.group,
         "function" => plant.function,
         "value" => plant.value,
@@ -32,10 +32,10 @@ defmodule ElixirgardenApi.ApiPlantControllerTest do
     conn = get conn, api_plant_path(conn, :show, plant)
 
     assert json_response(conn, 200) == %{
-      "plant" => %{
+      "plants" => [%{
         "plant_id" => plant.plant_id,
         "io_role" => plant.io_role,
-        "plant_id" => plant.plant_id,
+        "node_id" => plant.node_id,
         "group" => plant.group,
         "function" => plant.function,
         "value" => plant.value,
@@ -43,7 +43,7 @@ defmodule ElixirgardenApi.ApiPlantControllerTest do
         "location_y" => plant.location_y,
         "inserted_at" => Ecto.DateTime.to_iso8601(plant.inserted_at),
         "updated_at" => Ecto.DateTime.to_iso8601(plant.updated_at)
-        }
+        }]
     }
 
   end
