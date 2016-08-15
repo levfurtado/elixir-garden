@@ -13,5 +13,4 @@ defmodule ElixirgardenApi.ApiNodeController do
     render(conn, "show.json", node: node)
   end
 
-
 end

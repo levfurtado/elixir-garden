@@ -1,7 +1,7 @@
 defmodule ElixirgardenApi.ApiNodeView do
   use ElixirgardenApi.Web, :view
 
-  alias ElixirgardenApi.NodeView
+  alias ElixirgardenApi.ApiNodeView
 
   def render("index.json", %{nodes: nodes}) do
     # %{data: render_many(nodes, NodeView, "node.json")}

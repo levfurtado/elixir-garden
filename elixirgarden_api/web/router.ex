@@ -28,8 +28,8 @@ defmodule ElixirgardenApi.Router do
     resources "/nodes", ApiNodeController, except: [:new, :edit, :show]
     get "/nodes/:id", ApiNodeController, :show
 
-    resources "/plants", PlantController, except: [:new, :edit, :show]
-    get "/plants/:plant_id", PlantController, :show
+    resources "/plants", ApiPlantController, except: [:new, :edit, :show]
+    get "/plants/:plant_id", ApiPlantController, :show
   end
 
 end

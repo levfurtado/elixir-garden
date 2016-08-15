@@ -1,11 +1,8 @@
-defmodule ElixirgardenApi.PlantController do
+defmodule ElixirgardenApi.ApiPlantController do
   use ElixirgardenApi.Web, :controller
   import Ecto.Query
 
-  alias ElixirgardenApi.Repo
   alias ElixirgardenApi.Node
-
-  plug :action
 
   def index(conn, _params) do
     plants = Repo.all(Node)
@@ -13,8 +10,9 @@ defmodule ElixirgardenApi.PlantController do
   end
 
   def show(conn, %{"plant_id" => plant_id}) do
-    plants = Node |> Node.plant(plant_id) |> Repo.all
-    render conn, plants: plants
+    plant = Node |> Node.plant(plant_id) |> Repo.all
+    # plant = Repo.get!(Node, plant_id)
+    render(conn, "show.json", plant: plant)
   end
 
 end
