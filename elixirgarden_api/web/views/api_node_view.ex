@@ -8,9 +8,9 @@ defmodule ElixirgardenApi.ApiNodeView do
     %{  nodes: Enum.map(nodes, &node_json/1)}
   end
 
-  # def render("show.json", %{node: node}) do
-  #   %{data: render_one(node, NodeView, "node.json")}
-  # end
+  def render("show.json", %{node: node}) do
+    %{node: node_json(node)}
+  end
 
   def node_json(node) do
       %{

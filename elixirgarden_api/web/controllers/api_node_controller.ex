@@ -8,4 +8,10 @@ defmodule ElixirgardenApi.ApiNodeController do
     render(conn, "index.json", nodes: nodes)
   end
 
+  def show(conn, %{"id" => id}) do
+    node = Repo.get!(Node, id)
+    render(conn, "show.json", node: node)
+  end
+
+
 end
