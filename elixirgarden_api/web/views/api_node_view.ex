@@ -5,7 +5,7 @@ defmodule ElixirgardenApi.ApiNodeView do
 
   def render("index.json", %{nodes: nodes}) do
     # %{data: render_many(nodes, NodeView, "node.json")}
-    %{  nodes: Enum.map(nodes, &node_json/1)}
+    %{nodes: Enum.map(nodes, &node_json/1)}
   end
 
   def render("show.json", %{node: node}) do

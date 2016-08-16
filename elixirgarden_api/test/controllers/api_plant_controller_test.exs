@@ -25,14 +25,14 @@ defmodule ElixirgardenApi.ApiPlantControllerTest do
     }
   end
 
-  test "#show renders a single plant" do
+  test "#show renders a single plant's stats" do
     conn = build_conn()
-    plant = insert(:plant)
+    plant = insert(:node)
 
-    conn = get conn, api_plant_path(conn, :show, plant)
+    conn = get conn, api_plant_path(conn, :show, plant.plant_id)
 
     assert json_response(conn, 200) == %{
-      "plants" => [%{
+      "plant" => [%{
         "plant_id" => plant.plant_id,
         "io_role" => plant.io_role,
         "node_id" => plant.node_id,
