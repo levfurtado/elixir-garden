@@ -25,11 +25,11 @@ defmodule ElixirgardenApi.Router do
   scope "/api", ElixirgardenApi do
     pipe_through :api
 
-    resources "/nodes", ApiNodeController, except: [:new, :edit, :show]
-    get "/nodes/:id", ApiNodeController, :show
+    resources "/nodes", NodeApiController, except: [:new, :edit, :show]
+    get "/nodes/:id", NodeApiController, :show
 
-    resources "/plants", ApiPlantController, except: [:new, :edit, :show]
-    get "/plants/:plant_id", ApiPlantController, :show
+    resources "/plants", PlantApiController, except: [:new, :edit, :show]
+    get "/plants/:plant_id", PlantApiController, :show
   end
 
 end
