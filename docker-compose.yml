@@ -6,7 +6,7 @@ services:
     environment:
       - "URL=http://127.0.0.1:4001/api/swagger"
     ports:
-      - '80:80'
+      - '90:80'
   api:
     hostname: elixirgarden-api
     ports:
