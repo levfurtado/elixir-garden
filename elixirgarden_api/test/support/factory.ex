@@ -27,4 +27,37 @@ defmodule ElixirgardenApi.Factory do
     }
   end
 
+  def water_pump_factory do
+    %ElixirgardenApi.Node{
+      node_id: 1,
+      io_role: true,
+      plant_id: 1,
+      group: "Water",
+      function: "Water Pump",
+      value: 0.0,
+      location_x: 1,
+      location_y: 1
+    }
+    %ElixirgardenApi.Node{
+      node_id: 2,
+      io_role: true,
+      plant_id: 2,
+      group: "Water",
+      function: "Water Pump",
+      value: 0.0,
+      location_x: 2,
+      location_y: 2
+    }
+    %ElixirgardenApi.Node{
+      node_id: 3,
+      io_role: true,
+      plant_id: 3,
+      group: "Water",
+      function: "Water Pump",
+      value: 0.0,
+      location_x: 3,
+      location_y: 3
+    }
+  end
+
 end

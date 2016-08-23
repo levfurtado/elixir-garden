@@ -18,7 +18,7 @@ defmodule ElixirgardenApi.DatabaseSeeder do
   @input_or_output_list [true, false]
   @plant_id_list (1..16)
   @groups_list ["Temperature", "Humidity", "Water", "Light", "Air", "pH", "Current"]
-  @function_list ["not done"]
+  @function_list ["Water Pump", "Water Flow Meter", "Run Off pH", "Soil pH", "Soil Temperature", "Air Temperature"]
   @value_list (32..75)
   @location_x_list (1..4)
   @location_y_list (1..4)
