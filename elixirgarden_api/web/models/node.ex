@@ -19,31 +19,37 @@ defmodule ElixirgardenApi.Node do
     timestamps()
   end
 
-  def plant(query, id) do
+  def plant_id(query, id) do
     from n in query,
     where: n.plant_id == ^id,
     order_by: [desc: n.updated_at]
   end
 
+  def all_plants(query) do
+    from n in query,
+    distinct: n.plant_id,
+    order_by: [desc: n.plant_id]
+  end
+
   def outputNodes(query) do
-    from n in Node,
+    from n in query,
     where: n.io_role == true
   end
 
   def inputNodes(query) do
-    from n in Node,
+    from n in query,
     where: n.io_role == false
   end
 
   def singleMostRecent(query) do
-    from n in Node,
-    distinct: n.group,
+    from n in query,
+    distinct: [n.plant_id, n.function],
     order_by: [desc: n.inserted_at]
   end
 
   def mostRecentByMinute(query, minutes) do
     utcDateTime = :calendar.universal_time()
-    from n in Node,
+    from n in query,
     where: n.updated_at > datetime_add(type(^utcDateTime, :datetime), ^(-1 * minutes), "minute")
   end
 

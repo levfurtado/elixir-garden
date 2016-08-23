@@ -1,0 +1,19 @@
+<h2>Plants</h2>
+<div class="row">
+  <%= for plant <- @all_plants do %>
+    <% plant_id = plant.plant_id %>
+    <div class="col-lg-3">
+      <div class="plant-stat-wrapper">
+        <%= plant.plant_id %>
+        <%= for plant <- @plants do %>
+          <%= if plant.plant_id == plant_id do %>
+            <ul>
+              <li><%= plant.function %></li>
+              <li><%= plant.value %></li>
+            </ul>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

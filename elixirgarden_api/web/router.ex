@@ -17,7 +17,7 @@ defmodule ElixirgardenApi.Router do
     pipe_through :browser # Use the default browser stack
 
     resources "/nodes", NodeController
-
+    resources "/plants", PlantController
     get "/", PageController, :index
   end
 

@@ -62,4 +62,5 @@ defmodule ElixirgardenApi.NodeController do
     |> put_flash(:info, "Node deleted successfully.")
     |> redirect(to: node_path(conn, :index))
   end
+
 end
