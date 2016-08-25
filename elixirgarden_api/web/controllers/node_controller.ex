@@ -2,9 +2,10 @@ defmodule ElixirgardenApi.NodeController do
   use ElixirgardenApi.Web, :controller
 
   alias ElixirgardenApi.Node
-
+  alias ElixirgardenApi.Repo
+  
   def index(conn, _params) do
-    nodes = Repo.all(Node)
+    nodes = Node |> Repo.all |> Repo.preload([:messages])
     render(conn, :index, nodes: nodes)
   end
 

@@ -7,8 +7,9 @@ defmodule ElixirgardenApi.Message do
   alias ElixirgardenApi.Message
 
   schema "messages" do
+    belongs_to :node, Node
+    # field :node_id, :integer
     field :message_type, :boolean, default: true
-    field :node_id, :integer
     field :value, :float
     field :status, :string
 

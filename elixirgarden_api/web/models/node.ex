@@ -4,7 +4,7 @@ defmodule ElixirgardenApi.Node do
   import Ecto.Changeset
   import Ecto.Query
 
-  alias ElixirgardenApi.Node
+  alias ElixirgardenApi.Message
 
   schema "nodes" do
     field :node_id, :integer
@@ -16,6 +16,7 @@ defmodule ElixirgardenApi.Node do
     field :plant_id, :integer, default: 0
     field :location_x, :integer
     field :location_y, :integer
+    has_many :messages, Message
 
     timestamps()
   end
