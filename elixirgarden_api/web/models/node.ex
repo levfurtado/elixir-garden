@@ -34,12 +34,22 @@ defmodule ElixirgardenApi.Node do
 
   def outputNodes(query) do
     from n in query,
-    where: n.io_role == true
+    where: n.io_role == false
   end
 
   def inputNodes(query) do
     from n in query,
-    where: n.io_role == false
+    where: n.io_role == true
+  end
+
+  def digitalNodes(query) do
+    from n in query,
+    where: n.ad_role == false
+  end
+
+  def analogNodes(query) do
+    from n in query,
+    where: n.ad_role == true
   end
 
   def singleMostRecent(query) do

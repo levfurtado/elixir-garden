@@ -2,17 +2,54 @@
 <div class="row">
   <%= for plant <- @all_plants do %>
     <% plant_id = plant.plant_id %>
-    <div class="col-lg-3">
+    <div class="col-lg-12">
       <div class="plant-stat-wrapper">
-        <%= plant.plant_id %>
-        <%= for plant <- @plants do %>
-          <%= if plant.plant_id == plant_id do %>
-            <ul>
-              <li><%= plant.function %></li>
-              <li><%= plant.value %></li>
-            </ul>
-          <% end %>
-        <% end %>
+        <h1><%= plant.plant_id %></h1>
+        <div class="row">
+          <div class="col-lg-6">
+            <h3>Input Nodes</h3>
+            <%= for plant <- @inputNodes do %>
+              <%= if plant.plant_id == plant_id do %>
+                <ul>
+                  <li><%= plant.function %></li>
+                  <li><%= plant.value %></li>
+                  <li><%= plant.io_role %></li>
+                </ul>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="col-lg-6">
+            <h3>Output Nodes</h3>
+            <div class="row">
+              <div class="col-lg-6">
+                <h4>Analog Switches</h4>
+                <%= for plant <- @analogOutputNodes do %>
+                  <%= if plant.plant_id == plant_id do %>
+                    <ul>
+                      <li><%= plant.function %></li>
+                      <li><%= plant.value %></li>
+                      <li><%= plant.io_role %></li>
+                      <li><%= plant.ad_role %></li>
+                    </ul>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="col-lg-6">
+                <h4>Digital Switches</h4>
+                <%= for plant <- @digitalOutputNodes do %>
+                  <%= if plant.plant_id == plant_id do %>
+                    <ul>
+                      <li><%= plant.function %></li>
+                      <li><%= plant.value %></li>
+                      <li><%= plant.io_role %></li>
+                      <li><%= plant.ad_role %></li>
+                    </ul>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   <% end %>
