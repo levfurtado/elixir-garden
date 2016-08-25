@@ -2,7 +2,7 @@ defmodule ElixirgardenApi.NodeControllerTest do
   use ElixirgardenApi.ConnCase
 
   alias ElixirgardenApi.Node
-  @valid_attrs %{group: "some content", function: "some content", io_role: true,  location_x: 1, location_y: 1, node_id: 42, plant_id: 42, value: "120.5"}
+  @valid_attrs %{group: "some content", function: "some content", io_role: true,  location_x: 1, location_y: 1, node_id: 42, plant_id: 42, ad_role: true, value: "120.5"}
   @invalid_attrs %{}
 
   test "lists all entries on index", %{conn: conn} do

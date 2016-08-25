@@ -5,6 +5,7 @@ defmodule ElixirgardenApi.Factory do
     %ElixirgardenApi.Node{
       node_id: 1,
       io_role: true,
+      ad_role: true,
       plant_id: 1,
       group: "Temperature",
       function: "Soil Temperature",
@@ -18,6 +19,7 @@ defmodule ElixirgardenApi.Factory do
     %ElixirgardenApi.Node{
       node_id: 2,
       io_role: true,
+      ad_role: true,
       plant_id: 2,
       group: "pH",
       function: "Run off pH",
@@ -31,6 +33,7 @@ defmodule ElixirgardenApi.Factory do
     %ElixirgardenApi.Node{
       node_id: 1,
       io_role: true,
+      ad_role: true,
       plant_id: 1,
       group: "Water",
       function: "Water Pump",
@@ -41,6 +44,7 @@ defmodule ElixirgardenApi.Factory do
     %ElixirgardenApi.Node{
       node_id: 2,
       io_role: true,
+      ad_role: true,
       plant_id: 2,
       group: "Water",
       function: "Water Pump",
@@ -51,6 +55,7 @@ defmodule ElixirgardenApi.Factory do
     %ElixirgardenApi.Node{
       node_id: 3,
       io_role: true,
+      ad_role: true,
       plant_id: 3,
       group: "Water",
       function: "Water Pump",

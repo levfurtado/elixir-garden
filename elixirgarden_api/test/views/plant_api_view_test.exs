@@ -11,6 +11,7 @@ defmodule ElixirgardenApi.PlantApiViewTest do
     assert rendered_plant == %{
       node_id: plant.node_id,
       io_role: plant.io_role,
+      ad_role: plant.ad_role,
       plant_id: plant.plant_id,
       group: plant.group,
       function: plant.function,

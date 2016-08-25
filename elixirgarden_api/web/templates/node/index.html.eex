@@ -5,6 +5,7 @@
     <tr>
       <th>Node</th>
       <th>Io role</th>
+      <th>Ad role</th>
       <th>Group</th>
       <th>Function</th>
       <th>Value</th>
@@ -20,6 +21,7 @@
     <tr>
       <td><%= node.node_id %></td>
       <td><%= node.io_role %></td>
+      <td><%= node.ad_role %></td>
       <td><%= node.group %></td>
       <td><%= node.function %></td>
       <td><%= node.value %></td>

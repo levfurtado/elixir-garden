@@ -16,6 +16,7 @@ defmodule ElixirgardenApi.DatabaseSeeder do
 
   @node_id_list (1..100)
   @input_or_output_list [true, false]
+  @analog_or_digital_list [true, false]
   @plant_id_list (1..16)
   @groups_list ["Temperature", "Humidity", "Water", "Light", "Air", "pH", "Current"]
   @function_list ["Water Pump", "Water Flow Meter", "Run Off pH", "Soil pH", "Soil Temperature", "Air Temperature"]
@@ -30,6 +31,7 @@ defmodule ElixirgardenApi.DatabaseSeeder do
       plant_id: Enum.random(@plant_id_list),
       group: Enum.random(@groups_list),
       function: Enum.random(@function_list),
+      ad_role: Enum.random(@analog_or_digital_list),
       value: Enum.random(@value_list) / 1,
       location_x: Enum.random(@location_x_list),
       location_y: Enum.random(@location_y_list)
@@ -43,6 +45,7 @@ defmodule ElixirgardenApi.DatabaseSeeder do
       plant_id: Enum.random(@plant_id_list),
       group: Enum.random(@groups_list),
       function: Enum.random(@function_list),
+      ad_role: Enum.random(@analog_or_digital_list),
       value: Enum.random(@value_list) / 1,
       location_x: Enum.random(@location_x_list),
       location_y: Enum.random(@location_y_list)

@@ -8,7 +8,8 @@ defmodule ElixirgardenApi.Node do
 
   schema "nodes" do
     field :node_id, :integer
-    field :io_role, :boolean, default: false
+    field :io_role, :boolean, default: true
+    field :ad_role, :boolean, default: true
     field :group, :string
     field :function, :string
     field :value, :float
@@ -58,7 +59,7 @@ defmodule ElixirgardenApi.Node do
   """
   def changeset(node, params \\ %{}) do
     node
-    |> cast(params, [:node_id, :io_role, :group, :function, :value, :plant_id, :location_x, :location_y])
-    |> validate_required([:node_id, :io_role, :group, :function, :value, :location_x, :location_y])
+    |> cast(params, [:node_id, :io_role, :ad_role, :group, :function, :value, :plant_id, :location_x, :location_y])
+    |> validate_required([:node_id, :io_role, :ad_role, :group, :function, :value, :location_x, :location_y])
   end
 end

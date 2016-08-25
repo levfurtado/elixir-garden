@@ -13,6 +13,11 @@
   </li>
 
   <li>
+    <strong>Ad role:</strong>
+    <%= @node.ad_role %>
+  </li>
+
+  <li>
     <strong>Group:</strong>
     <%= @node.group %>
   </li>
