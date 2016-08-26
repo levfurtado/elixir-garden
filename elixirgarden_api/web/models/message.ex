@@ -1,17 +1,11 @@
 defmodule ElixirgardenApi.Message do
-  use Ecto.Schema
-
-  import Ecto.Changeset
-  import Ecto.Query
-
-  alias ElixirgardenApi.Message
+  use ElixirgardenApi.Web, :model
 
   schema "messages" do
-    belongs_to :node, Node
-    # field :node_id, :integer
-    field :message_type, :boolean, default: true
-    field :value, :float
+    field :message_type, :boolean, default: false
     field :status, :string
+    field :value, :float
+    belongs_to :node, ElixirgardenApi.Node
 
     timestamps()
   end
@@ -19,9 +13,9 @@ defmodule ElixirgardenApi.Message do
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
-  def changeset(message, params \\ %{}) do
-    message
-    |> cast(params, [:message_type, :node_id, :value, :status])
-    |> validate_required([:message_type, :node_id, :value, :status])
+  def changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, [:message_type, :status, :value])
+    |> validate_required([:message_type, :status, :value])
   end
 end

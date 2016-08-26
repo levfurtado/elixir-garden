@@ -3,7 +3,7 @@ defmodule ElixirgardenApi.NodeController do
 
   alias ElixirgardenApi.Node
   alias ElixirgardenApi.Repo
-  
+
   def index(conn, _params) do
     nodes = Node |> Repo.all |> Repo.preload([:messages])
     render(conn, :index, nodes: nodes)
