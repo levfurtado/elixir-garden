@@ -32,7 +32,10 @@
                       <li><%= plant.ad_role %></li>
                     </ul>
                   <% end %>
+
+
                 <% end %>
+
               </div>
               <div class="col-lg-6">
                 <h4>Digital Switches</h4>

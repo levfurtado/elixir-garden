@@ -1,0 +1,28 @@
+<h2>Show message</h2>
+
+<ul>
+
+  <li>
+    <strong>Message type:</strong>
+    <%= @message.message_type %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @message.status %>
+  </li>
+
+  <li>
+    <strong>Value:</strong>
+    <%= @message.value %>
+  </li>
+
+  <li>
+    <strong>Node:</strong>
+    <%= @message.node_id %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: message_path(@conn, :edit, @message) %>
+<%= link "Back", to: message_path(@conn, :index) %>

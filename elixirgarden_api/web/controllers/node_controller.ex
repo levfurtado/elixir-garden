@@ -2,6 +2,7 @@ defmodule ElixirgardenApi.NodeController do
   use ElixirgardenApi.Web, :controller
 
   alias ElixirgardenApi.Node
+  alias ElixirgardenApi.Message
   alias ElixirgardenApi.Repo
 
   def index(conn, _params) do
@@ -62,6 +63,22 @@ defmodule ElixirgardenApi.NodeController do
     conn
     |> put_flash(:info, "Node deleted successfully.")
     |> redirect(to: node_path(conn, :index))
+  end
+
+  def plants(conn, _params) do
+    changeset = Message.changeset(%Message{})
+    action = node_path(conn, :create)
+    all_plants = Node |> Node.all_plants |> Repo.all
+    outputNodes = Node |> Node.singleMostRecent |> Node.outputNodes
+    digitalOutputNodes = outputNodes |> Node.digitalNodes |> Repo.all
+    analogOutputNodes = outputNodes |> Node.analogNodes |> Repo.all |> Repo.preload([:messages])
+    inputNodes = Node |> Node.singleMostRecent |> Node.inputNodes |> Repo.all
+    render(conn, :plants, changeset: changeset,
+                          action: action,
+                          digitalOutputNodes: digitalOutputNodes,
+                          analogOutputNodes: analogOutputNodes,
+                          inputNodes: inputNodes,
+                          all_plants: all_plants)
   end
 
 end
