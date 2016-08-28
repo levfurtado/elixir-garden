@@ -2,7 +2,7 @@ defmodule ElixirgardenApi.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", ElixirgardenApi.RoomChannel
+  channel "output_node_room:lobby", ElixirgardenApi.OutputNodeRoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

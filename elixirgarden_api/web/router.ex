@@ -20,7 +20,6 @@ defmodule ElixirgardenApi.Router do
     resources "/messages", MessageController
     get "/", PageController, :index
     get "/plants", NodeController, :plants
-    get "/bitch", NodeController, :bitch
   end
 
   # Other scopes may use custom stacks.

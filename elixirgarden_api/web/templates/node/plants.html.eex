@@ -31,8 +31,10 @@
                       <li><%= plant.io_role %></li>
                       <li><%= plant.ad_role %></li>
                     </ul>
+                    <!-- block for sending messages to output nodes -->
+                    <div class="output-node"></div>
+                    <input type="text" class="output-node-text"></input>
                   <% end %>
-
 
                 <% end %>
 
