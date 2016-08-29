@@ -32,8 +32,8 @@
                       <li><%= plant.ad_role %></li>
                     </ul>
                     <!-- block for sending messages to output nodes -->
-                    <div class="output-node"></div>
-                    <input type="text" class="output-node-text"></input>
+                    <div class="output-node" id="output-node-<%= plant.node_id %>"></div>
+                    <input type="text" class="output-node-text" id="output-node-<%= plant.node_id %>-text"></input>
                   <% end %>
 
                 <% end %>

@@ -60,14 +60,29 @@ let outputNodeContainer = $(".output-node")
 
 outputNodeInput.on("keypress", event => {
   if(event.keyCode === 13){
-    channel.push("new_output_msg", {body: outputNodeInput.val()})
-    outputNodeInput.val("")
+    let submittedField = event.currentTarget.id
+    let node_id_re = /output-node-(\d+)/;
+    let node_id_matches = node_id_re.exec(submittedField)
+    let node_id_val = node_id_matches[1]
+    console.log(node_id_val);
+
+    let submittedFieldId = "#" + submittedField
+    let submittedFieldInput = $(submittedFieldId)
+    let new_output_msg_body = [{
+      node_id: node_id_val,
+      node_value: submittedFieldInput.val()
+    }]
+    channel.push("new_output_msg", {
+      body: new_output_msg_body
+    })
+    submittedFieldInput.val("")
     console.log("Enter was pressed");
   }
 })
 
 channel.on("new_output_msg", payload => {
-  outputNodeContainer.append( `<br/>[${Date()}] ${payload.body}` )
+  outputNodeContainer.html("")
+  outputNodeContainer.append( `<br/>[${Date()}] Node Id: ${payload.body[0].node_id} Value: ${payload.body[0].node_value}` )
   console.log("Message Ack");
   console.log("payload, %o", payload);
 })
