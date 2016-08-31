@@ -19,7 +19,7 @@ defmodule ElixirgardenApi.Mixfile do
   def application do
     [mod: {ElixirgardenApi, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :ex_machina]]
+                    :phoenix_ecto, :postgrex, :ex_machina, :amqp_client, :amqp]]
   end
 
   # Specifies which paths to compile per environment.
@@ -38,7 +38,9 @@ defmodule ElixirgardenApi.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:ex_machina, "~> 1.0"}]
+     {:ex_machina, "~> 1.0"},
+     {:amqp_client, git: "https://github.com/jbrisbin/amqp_client.git", override: true},
+     {:amqp, "~> 0.1.4"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
