@@ -28,7 +28,7 @@ services:
       - 5432:5432
     hostname: elixirgarden-postgres
   rabbitmq:
-    image: "statewide/rabbitmq-management-mqtt:0.2"
+    build: "./docker/elixirgarden-rabbitmq"
     hostname: "rabbitmq"
     environment:
       RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
@@ -40,7 +40,9 @@ services:
       - "5672:5672"
     labels:
       NAME: "rabbitmq1"
-    # volumes:
-      # - "./enabled_plugins:/etc/rabbitmq/enabled_plugins"
+    volumes:
+     - "/data/log"
+     - "/data/mnesia"
+      #- "./enabled_plugins:/etc/rabbitmq/enabled_plugins"
       #- "./rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro"
       #- "./autocluster-0.4.1.ez:/usr/lib/rabbitmq/lib/rabbitmq_server-3.5.5/plugins/autocluster-0.4.1.ez"
