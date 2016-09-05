@@ -19,7 +19,7 @@ defmodule ElixirgardenApi.Mixfile do
   def application do
     [mod: {ElixirgardenApi, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :ex_machina, :amqp_client, :amqp]]
+                    :phoenix_ecto, :postgrex, :ex_machina, :amqp]]
   end
 
   # Specifies which paths to compile per environment.

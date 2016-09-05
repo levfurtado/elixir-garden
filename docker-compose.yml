@@ -1,16 +1,10 @@
 version: "2"
 services:
   # oh yeah it is that file...
-  web:
-    image: ianneub/swagger-ui
-    environment:
-      - "URL=http://127.0.0.1:4001/api/swagger"
-    ports:
-      - '90:80'
   api:
     hostname: elixirgarden-api
     ports:
-      - 4001:4000
+      - 4000:4000
     build:
       context: .
     links:
@@ -26,7 +20,6 @@ services:
 
     ports:
       - 5432:5432
-    hostname: elixirgarden-postgres
   rabbitmq:
     build: "./docker/elixirgarden-rabbitmq"
     hostname: "rabbitmq"
@@ -38,6 +31,7 @@ services:
     ports:
       - "15672:15672"
       - "5672:5672"
+      - "1883:1883"
     labels:
       NAME: "rabbitmq1"
     volumes:
