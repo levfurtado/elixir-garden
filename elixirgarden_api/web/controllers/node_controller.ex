@@ -2,11 +2,10 @@ defmodule ElixirgardenApi.NodeController do
   use ElixirgardenApi.Web, :controller
 
   alias ElixirgardenApi.Node
-  alias ElixirgardenApi.Message
   alias ElixirgardenApi.Repo
 
   def index(conn, _params) do
-    nodes = Node |> Repo.all |> Repo.preload([:messages])
+    nodes = Node |> Repo.all
     render(conn, :index, nodes: nodes)
   end
 
@@ -66,16 +65,12 @@ defmodule ElixirgardenApi.NodeController do
   end
 
   def plants(conn, _params) do
-    changeset = Message.changeset(%Message{})
-    action = node_path(conn, :create)
     all_plants = Node |> Node.all_plants |> Repo.all
     outputNodes = Node |> Node.singleMostRecent |> Node.outputNodes
     digitalOutputNodes = outputNodes |> Node.digitalNodes |> Repo.all
-    analogOutputNodes = outputNodes |> Node.analogNodes |> Repo.all |> Repo.preload([:messages])
+    analogOutputNodes = outputNodes |> Node.analogNodes |> Repo.all
     inputNodes = Node |> Node.singleMostRecent |> Node.inputNodes |> Repo.all
-    render(conn, :plants, changeset: changeset,
-                          action: action,
-                          digitalOutputNodes: digitalOutputNodes,
+    render(conn, :plants, digitalOutputNodes: digitalOutputNodes,
                           analogOutputNodes: analogOutputNodes,
                           inputNodes: inputNodes,
                           all_plants: all_plants)

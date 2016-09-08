@@ -24,10 +24,10 @@ defmodule ElixirgardenApi.OutputNodeRoomChannel do
 
   def handle_in("new_output_msg", %{"body" => body}, socket) do
     broadcast! socket, "new_output_msg", %{body: body}
-    {:ok, connection} = AMQP.Connection.open
+    {:ok, connection} = AMQP.Connection.open(host: "172.18.0.2")
     {:ok, channel} = AMQP.Channel.open(connection)
     AMQP.Queue.declare(channel, "hello")
-    AMQP.Basic.publish(channel, "", "hello", "Hello World!")
+    AMQP.Basic.publish(channel, "", "hello", "I'll be there for you!")
     IO.puts " [x] Sent 'Hello World!'"
     AMQP.Connection.close(connection)
     {:noreply, socket}

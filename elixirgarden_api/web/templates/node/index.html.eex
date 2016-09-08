@@ -39,11 +39,4 @@
   </tbody>
 </table>
 
-<%= for node <- @nodes do %>
-  <%= for message <- node.messages do %>
-    <p>message id</p>
-    <p><%= message.node_id %></p>
-  <% end %>
-<% end %>
-
 <%= link "New node", to: node_path(@conn, :new) %>
