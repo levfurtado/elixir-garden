@@ -68,10 +68,10 @@ outputNodeInput.on("keypress", event => {
 
     let submittedFieldId = "#" + submittedField
     let submittedFieldInput = $(submittedFieldId)
-    let new_output_msg_body = [{
-      node_id: node_id_val,
-      node_value: submittedFieldInput.val()
-    }]
+    let new_output_msg_body = [
+      { node_id: node_id_val },
+      { node_value: submittedFieldInput.val() }
+    ]
     channel.push("new_output_msg", {
       body: new_output_msg_body
     })

@@ -1,5 +1,6 @@
 defmodule ElixirgardenApi.OutputNodeRoomChannel do
   use ElixirgardenApi.Web, :channel
+  use AMQP
 
   def join("output_node_room:lobby", payload, socket) do
     if authorized?(payload) do
@@ -24,10 +25,11 @@ defmodule ElixirgardenApi.OutputNodeRoomChannel do
 
   def handle_in("new_output_msg", %{"body" => body}, socket) do
     broadcast! socket, "new_output_msg", %{body: body}
+    IO.puts inspect(body)
     {:ok, connection} = AMQP.Connection.open(host: "172.18.0.2")
     {:ok, channel} = AMQP.Channel.open(connection)
     AMQP.Queue.declare(channel, "hello")
-    AMQP.Basic.publish(channel, "", "hello", "I'll be there for you!")
+    AMQP.Basic.publish(channel, "", "hello", "squad" )
     IO.puts " [x] Sent 'Hello World!'"
     AMQP.Connection.close(connection)
     {:noreply, socket}
