@@ -13,7 +13,6 @@
 defmodule ElixirgardenApi.DatabaseSeeder do
   alias ElixirgardenApi.Repo
   alias ElixirgardenApi.Node
-  alias ElixirgardenApi.Message
 
   @node_id_list (1..100)
   @input_or_output_list [true, false]
@@ -24,11 +23,6 @@ defmodule ElixirgardenApi.DatabaseSeeder do
   @value_list (32..75)
   @location_x_list (1..4)
   @location_y_list (1..4)
-
-  @message_node_id_list (1..100)
-  @message_type_list [true, false]
-  @message_value_list (0..99)
-  @message_status_list ["Pending", "Sent", "Unknown", "Timed Out"]
 
   def insert_metric_node(id) do
     Repo.insert! %Node{
@@ -58,15 +52,6 @@ defmodule ElixirgardenApi.DatabaseSeeder do
     }
   end
 
-  def insert_message(id) do
-    Repo.insert! %Message{
-      message_type: Enum.random(@message_type_list),
-      node_id: id,
-      value: Enum.random(@message_value_list) / 1,
-      status: Enum.random(@message_status_list)
-    }
-  end
-
 
   def clear do
     Repo.delete_all
@@ -75,4 +60,3 @@ end
 
 (1..100) |> Enum.each(fn id -> ElixirgardenApi.DatabaseSeeder.insert_metric_node(id) end)
 (101..200) |> Enum.each(fn id -> ElixirgardenApi.DatabaseSeeder.insert_action_node(id) end)
-(1..200) |> Enum.each(fn id -> ElixirgardenApi.DatabaseSeeder.insert_message(id) end)
