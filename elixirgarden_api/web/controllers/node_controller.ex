@@ -76,4 +76,16 @@ defmodule ElixirgardenApi.NodeController do
                           all_plants: all_plants)
   end
 
+  def output_panel(conn, _params) do
+    changeset = Node.changeset(%Node{})
+    all_plants = Node |> Node.all_plants |> Repo.all
+    outputNodes = Node |> Node.singleMostRecent |> Node.outputNodes
+    digitalOutputNodes = outputNodes |> Node.digitalNodes |> Repo.all
+    analogOutputNodes = outputNodes |> Node.analogNodes |> Repo.all
+    render(conn, :output_panel, changeset: changeset,
+                                digitalOutputNodes: digitalOutputNodes,
+                                analogOutputNodes: analogOutputNodes,
+                                all_plants: all_plants)
+  end
+
 end

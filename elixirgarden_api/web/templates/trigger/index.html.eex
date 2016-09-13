@@ -1,0 +1,32 @@
+<h2>Listing triggers</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Node</th>
+      <th>Lower bound</th>
+      <th>Upper bound</th>
+      <th>Active</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for trigger <- @triggers do %>
+    <tr>
+      <td><%= trigger.node_id %></td>
+      <td><%= trigger.lower_bound %></td>
+      <td><%= trigger.upper_bound %></td>
+      <td><%= trigger.active %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: trigger_path(@conn, :show, trigger), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: trigger_path(@conn, :edit, trigger), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: trigger_path(@conn, :delete, trigger), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New trigger", to: trigger_path(@conn, :new) %>

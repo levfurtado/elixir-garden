@@ -1,0 +1,34 @@
+<h2>Listing routines</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Node</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Value</th>
+      <th>Active</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for routine <- @routines do %>
+    <tr>
+      <td><%= routine.node_id %></td>
+      <td><%= routine.start_time %></td>
+      <td><%= routine.end_time %></td>
+      <td><%= routine.value %></td>
+      <td><%= routine.active %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: routine_path(@conn, :show, routine), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: routine_path(@conn, :edit, routine), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: routine_path(@conn, :delete, routine), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New routine", to: routine_path(@conn, :new) %>

@@ -1,0 +1,108 @@
+<%= render "schedule_form.html", changeset: @changeset,
+                        action: node_path(@conn, :create) %>
+
+
+
+<h2>Plants</h2>
+<div class="row">
+  <%= for plant <- @all_plants do %>
+    <% plant_id = plant.plant_id %>
+    <div class="col-lg-12">
+      <div class="plant-stat-wrapper">
+        <h1><%= plant.plant_id %></h1>
+        <div class="row">
+          <div class="col-lg-12">
+            <h3>Output Nodes</h3>
+            <div class="row">
+              <div class="col-lg-6">
+                <h4>Analog Switches</h4>
+                <%= for plant <- @analogOutputNodes do %>
+                  <%= if plant.plant_id == plant_id do %>
+                    <ul>
+                      <li><%= plant.function %></li>
+                      <li><%= plant.value %></li>
+                      <li><%= plant.io_role %></li>
+                      <li><%= plant.ad_role %></li>
+                    </ul>
+                    <!-- block for sending messages to output nodes -->
+                    <div class="schedule-box" id="start-time-node-<%= plant.node_id %>"></div>
+                    <input type="datetime-local" class="schedule-text" id="start-time-node-<%= plant.node_id %>-text"></input>
+                    <div class="schedule-box" id="end-time-node-<%= plant.node_id %>"></div>
+                    <input type="datetime-local" class="schedule-text" id="end-time-node-<%= plant.node_id %>-text"></input>
+                    <button class="schedule-button" id="schedule-button-node-<%= plant.node_id %>">Schedule</button>
+                  <% end %>
+
+                <% end %>
+
+              </div>
+              <div class="col-lg-6">
+
+                        <h2>Plants</h2>
+                        <div class="row">
+                          <%= for plant <- @all_plants do %>
+                            <% plant_id = plant.plant_id %>
+                            <div class="col-lg-12">
+                              <div class="plant-stat-wrapper">
+                                <h1><%= plant.plant_id %></h1>
+                                <div class="row">
+                                  <div class="col-lg-12">
+                                    <h3>Output Nodes</h3>
+                                    <div class="row">
+                                      <div class="col-lg-6">
+                                        <h4>Analog Switches</h4>
+                                        <%= for plant <- @analogOutputNodes do %>
+                                          <%= if plant.plant_id == plant_id do %>
+                                            <ul>
+                                              <li><%= plant.function %></li>
+                                              <li><%= plant.value %></li>
+                                              <li><%= plant.io_role %></li>
+                                              <li><%= plant.ad_role %></li>
+                                            </ul>
+                                            <!-- block for sending messages to output nodes -->
+                                            <div class="output-node" id="output-node-<%= plant.node_id %>"></div>
+                                            <input type="datetime-local" class="output-node-text" id="output-node-<%= plant.node_id %>-text"></input>
+                                          <% end %>
+
+                                        <% end %>
+
+                                      </div>
+                                      <div class="col-lg-6">
+                                        <h4>Digital Switches</h4>
+                                        <%= for plant <- @digitalOutputNodes do %>
+                                          <%= if plant.plant_id == plant_id do %>
+                                            <ul>
+                                              <li><%= plant.function %></li>
+                                              <li><%= plant.value %></li>
+                                              <li><%= plant.io_role %></li>
+                                              <li><%= plant.ad_role %></li>
+                                            </ul>
+                                          <% end %>
+                                        <% end %>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          <% end %>
+                        </div>
+
+                <h4>Digital Switches</h4>
+                <%= for plant <- @digitalOutputNodes do %>
+                  <%= if plant.plant_id == plant_id do %>
+                    <ul>
+                      <li><%= plant.function %></li>
+                      <li><%= plant.value %></li>
+                      <li><%= plant.io_role %></li>
+                      <li><%= plant.ad_role %></li>
+                    </ul>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

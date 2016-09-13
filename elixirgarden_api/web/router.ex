@@ -19,6 +19,9 @@ defmodule ElixirgardenApi.Router do
     resources "/nodes", NodeController
     get "/", PageController, :index
     get "/plants", NodeController, :plants
+    get "/output_panel", NodeController, :output_panel
+    resources "/routines", RoutineController
+    resources "/triggers", TriggerController
   end
 
   # Other scopes may use custom stacks.

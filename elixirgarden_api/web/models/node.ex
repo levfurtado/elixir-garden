@@ -15,6 +15,8 @@ defmodule ElixirgardenApi.Node do
     field :location_x, :integer
     field :location_y, :integer
 
+    has_many :triggers, ElixirgardenApi.Trigger
+    has_many :routines,  ElixirgardenApi.Routine
     timestamps()
   end
 

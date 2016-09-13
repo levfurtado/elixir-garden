@@ -53,10 +53,20 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 
 socket.connect()
 
+//Scheduling channel
+let scheduleChannel = socket.channel('schedule_channel:lobby', {})
+let scheduleInput = $('.schedule-text')
+let scheduleButton = $('.schedule-button')
+
+scheduleInput.on()
+
+//Output to nodes
 // Now that you are connected, you can join channels with a topic:
-let channel = socket.channel("output_node_room:lobby", {})
+let outputNodeChannel = socket.channel("output_node_room:lobby", {})
 let outputNodeInput = $(".output-node-text")
 let outputNodeContainer = $(".output-node")
+
+
 
 outputNodeInput.on("keypress", event => {
   if(event.keyCode === 13){
@@ -68,26 +78,31 @@ outputNodeInput.on("keypress", event => {
 
     let submittedFieldId = "#" + submittedField
     let submittedFieldInput = $(submittedFieldId)
-    let new_output_msg_body = [
-      { node_id: node_id_val },
-      { node_value: submittedFieldInput.val() }
-    ]
-    channel.push("new_output_msg", {
-      body: new_output_msg_body
+
+    let new_output_msg_body = new Object
+    new_output_msg_body.node_id =  node_id_val
+    new_output_msg_body.node_value = submittedFieldInput.val()
+
+    let jsonified_msg = JSON.stringify(new_output_msg_body)
+    //sends out the actual message
+    outputNodeChannel.push("new_output_msg", {
+      body: jsonified_msg
     })
+    //clears the field that just typed that stuff in
     submittedFieldInput.val("")
     console.log("Enter was pressed");
   }
 })
 
-channel.on("new_output_msg", payload => {
+outputNodeChannel.on("new_output_msg", payload => {
+  let message_object = JSON.parse(payload.body)
   outputNodeContainer.html("")
-  outputNodeContainer.append( `<br/>[${Date()}] Node Id: ${payload.body[0].node_id} Value: ${payload.body[0].node_value}` )
+  outputNodeContainer.append( `<br/>[${Date()}] Node Id: ${message_object.node_id} Value: ${message_object.node_value}` )
   console.log("Message Ack");
   console.log("payload, %o", payload);
 })
 
-channel.join()
+outputNodeChannel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
 

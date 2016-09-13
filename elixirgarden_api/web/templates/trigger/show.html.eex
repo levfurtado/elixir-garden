@@ -1,0 +1,28 @@
+<h2>Show trigger</h2>
+
+<ul>
+
+  <li>
+    <strong>Node:</strong>
+    <%= @trigger.node_id %>
+  </li>
+
+  <li>
+    <strong>Lower bound:</strong>
+    <%= @trigger.lower_bound %>
+  </li>
+
+  <li>
+    <strong>Upper bound:</strong>
+    <%= @trigger.upper_bound %>
+  </li>
+
+  <li>
+    <strong>Active:</strong>
+    <%= @trigger.active %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: trigger_path(@conn, :edit, @trigger) %>
+<%= link "Back", to: trigger_path(@conn, :index) %>

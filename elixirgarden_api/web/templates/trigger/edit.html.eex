@@ -1,0 +1,6 @@
+<h2>Edit trigger</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: trigger_path(@conn, :update, @trigger) %>
+
+<%= link "Back", to: trigger_path(@conn, :index) %>
