@@ -3,6 +3,8 @@ defmodule ElixirgardenApi.UserSocket do
 
   ## Channels
   channel "output_node_room:lobby", ElixirgardenApi.OutputNodeRoomChannel
+  channel "schedule_room:lobby", ElixirgardenApi.ScheduleRoomChannel
+
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

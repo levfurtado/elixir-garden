@@ -1,7 +1,7 @@
-defmodule ElixirgardenApi.Routine do
+defmodule ElixirgardenApi.Schedule do
   use ElixirgardenApi.Web, :model
 
-  schema "routines" do
+  schema "schedules" do
     field :start_time, Ecto.DateTime
     field :end_time, Ecto.DateTime
     field :value, :float
@@ -10,6 +10,21 @@ defmodule ElixirgardenApi.Routine do
 
     belongs_to :node, ElixirgardenApi.Node
     timestamps()
+  end
+
+  def allSchedules(query) do
+      from s in query,
+      order_by: [desc: s.node_id]
+  end
+
+  def activeSchedules(query) do
+    from s in query,
+    where: s.active == true
+  end
+
+  def inactiveSchedules(query) do
+    from s in query,
+    where: s.active == false
   end
 
   @doc """

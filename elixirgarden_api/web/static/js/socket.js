@@ -53,14 +53,55 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 
 socket.connect()
 
-//Scheduling channel
-let scheduleChannel = socket.channel('schedule_channel:lobby', {})
+////Scheduling channel
+let scheduleChannel = socket.channel('schedule_room:lobby', {})
 let scheduleInput = $('.schedule-text')
 let scheduleButton = $('.schedule-button')
 
-scheduleInput.on()
+$(scheduleButton).on("click", function() {
+  //get node id
+  let submittedField = event.currentTarget.id
+  let node_id_re = /schedule-button-node-(\d+)/;
+  let node_id_matches = node_id_re.exec(submittedField)
+  let node_id_val = node_id_matches[1]
+  let end_time_elem = "#end-time-node-" + node_id_val + "-data"
+  let end_time_input = $(end_time_elem)
+  let start_time_elem = "#start-time-node-" + node_id_val + "-data"
+  let start_time_input = $(start_time_elem)
+  let active_elem = "#active-node-" + node_id_val + "-data"
+  let active_input = $(active_elem)
+  let schedule_msg_body = new Object
+  schedule_msg_body.node_id =  node_id_val
+  schedule_msg_body.start_time = start_time_input.val()
+  schedule_msg_body.end_time = end_time_input.val()
+  schedule_msg_body.active = active_input.val()
 
-//Output to nodes
+  let jsonified_msg = JSON.stringify(schedule_msg_body)
+  //sends out the actual message
+  debugger
+  scheduleChannel.push("schedule_change", {
+    body: jsonified_msg
+  })
+  //clears the field that just typed that stuff in
+  start_time_input.val("")
+  end_time_input.val("")
+  active_input.val("")
+})
+
+scheduleChannel.on("schedule_change", payload => {
+  let message_object = JSON.parse(payload.body)
+  scheduleButton.html("")
+  scheduleButton.append( `<br/>[${Date()}] Node Id: ${message_object.node_id}` )
+  console.log("Message Ack");
+  console.log("payload, %o", payload);
+})
+
+scheduleChannel.join()
+  .receive("ok", resp => { console.log("Joined successfully", resp) })
+  .receive("error", resp => { console.log("Unable to join", resp) })
+
+
+////Output Channel
 // Now that you are connected, you can join channels with a topic:
 let outputNodeChannel = socket.channel("output_node_room:lobby", {})
 let outputNodeInput = $(".output-node-text")
@@ -71,6 +112,7 @@ let outputNodeContainer = $(".output-node")
 outputNodeInput.on("keypress", event => {
   if(event.keyCode === 13){
     let submittedField = event.currentTarget.id
+    //looks for id of submitted field
     let node_id_re = /output-node-(\d+)/;
     let node_id_matches = node_id_re.exec(submittedField)
     let node_id_val = node_id_matches[1]

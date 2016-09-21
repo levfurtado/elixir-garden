@@ -1,0 +1,33 @@
+<h2>Show schedule</h2>
+
+<ul>
+
+  <li>
+    <strong>Node:</strong>
+    <%= @schedule.node_id %>
+  </li>
+
+  <li>
+    <strong>Start time:</strong>
+    <%= @schedule.start_time %>
+  </li>
+
+  <li>
+    <strong>End time:</strong>
+    <%= @schedule.end_time %>
+  </li>
+
+  <li>
+    <strong>Value:</strong>
+    <%= @schedule.value %>
+  </li>
+
+  <li>
+    <strong>Active:</strong>
+    <%= @schedule.active %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: schedule_path(@conn, :edit, @schedule) %>
+<%= link "Back", to: schedule_path(@conn, :index) %>

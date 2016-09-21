@@ -20,7 +20,7 @@ defmodule ElixirgardenApi.Router do
     get "/", PageController, :index
     get "/plants", NodeController, :plants
     get "/output_panel", NodeController, :output_panel
-    resources "/routines", RoutineController
+    resources "/schedules", ScheduleController
     resources "/triggers", TriggerController
   end
 

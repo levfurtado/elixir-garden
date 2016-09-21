@@ -13,6 +13,8 @@
 defmodule ElixirgardenApi.DatabaseSeeder do
   alias ElixirgardenApi.Repo
   alias ElixirgardenApi.Node
+  alias ElixirgardenApi.Schedule
+  alias ElixirgardenApi.Trigger
 
   @node_id_list (1..100)
   @input_or_output_list [true, false]
@@ -23,6 +25,33 @@ defmodule ElixirgardenApi.DatabaseSeeder do
   @value_list (32..75)
   @location_x_list (1..4)
   @location_y_list (1..4)
+  @day_list (1..31)
+  @month_list (1..12)
+  @year_list 2016
+  @minute_list (0..59)
+  @hour_list (0..23)
+  @second_list (0..59)
+  @upper_bound_list (50..75)
+  @lower_bound_list (0..25)
+
+  def insert_trigger(id) do
+    Repo.insert! %Trigger{
+      node_id: id,
+      lower_bound: Enum.random(@lower_bound_list) / 1,
+      upper_bound: Enum.random(@upper_bound_list) / 1,
+      active: Enum.random([true, false])
+    }
+  end
+
+  def insert_schedule(id) do
+    Repo.insert! %Schedule{
+      node_id: id,
+      value: Enum.random(@value_list) / 1,
+      active: Enum.random([true, false]),
+      start_time: Ecto.DateTime.utc(),
+      end_time: Ecto.DateTime.utc()
+    }
+  end
 
   def insert_metric_node(id) do
     Repo.insert! %Node{
@@ -60,3 +89,5 @@ end
 
 (1..100) |> Enum.each(fn id -> ElixirgardenApi.DatabaseSeeder.insert_metric_node(id) end)
 (101..200) |> Enum.each(fn id -> ElixirgardenApi.DatabaseSeeder.insert_action_node(id) end)
+(1..200) |> Enum.each(fn id -> ElixirgardenApi.DatabaseSeeder.insert_schedule(id) end)
+(1..200) |> Enum.each(fn id -> ElixirgardenApi.DatabaseSeeder.insert_trigger(id) end)

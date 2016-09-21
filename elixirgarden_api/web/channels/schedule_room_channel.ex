@@ -1,8 +1,7 @@
-defmodule ElixirgardenApi.OutputNodeRoomChannel do
+defmodule ElixirgardenApi.ScheduleRoomChannel do
   use ElixirgardenApi.Web, :channel
-  use AMQP
 
-  def join("output_node_room:lobby", payload, socket) do
+  def join("schedule_room:lobby", payload, socket) do
     if authorized?(payload) do
       {:ok, socket}
     else
@@ -17,26 +16,26 @@ defmodule ElixirgardenApi.OutputNodeRoomChannel do
   end
 
   # It is also common to receive messages from the client and
-  # broadcast to everyone in the current topic (output_node_room:lobby).
+  # broadcast to everyone in the current topic (schedule_room:lobby).
   def handle_in("shout", payload, socket) do
     broadcast socket, "shout", payload
     {:noreply, socket}
   end
 
-  def handle_in("new_output_msg", %{"body" => body}, socket) do
-    broadcast! socket, "new_output_msg", %{body: body}
+  def handle_in("schedule_change", %{"body" => body}, socket) do
+    broadcast! socket, "schedule_change", %{body: body}
     IO.puts inspect(body)
     {:ok, connection} = AMQP.Connection.open(host: "172.18.0.2")
     {:ok, channel} = AMQP.Channel.open(connection)
-    AMQP.Queue.declare(channel, "output_change")
-    AMQP.Basic.publish(channel, "", "output_change", body )
+    AMQP.Queue.declare(channel, "schedule_change")
+    AMQP.Basic.publish(channel, "", "schedule_change", body )
     IO.puts " [x] Sent 'Hello World!'"
     AMQP.Connection.close(connection)
     {:noreply, socket}
   end
 
-  def handle_out("new_output_msg", payload, socket) do
-    push socket, "new_output_msg", payload
+  def handle_out("schedule_change", payload, socket) do
+    push socket, "schedule_change", payload
     {:noreply, socket}
   end
 

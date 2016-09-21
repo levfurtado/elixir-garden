@@ -1,4 +1,4 @@
-{:ok, connection} = AMQP.Connection.open(host: "172.18.0.3")
+{:ok, connection} = AMQP.Connection.open(host: "172.18.0.2")
 {:ok, channel} = AMQP.Channel.open(connection)
 AMQP.Queue.declare(channel, "hello")
 AMQP.Basic.publish(channel, "", "hello", "Hello World!")

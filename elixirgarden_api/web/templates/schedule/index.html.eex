@@ -1,0 +1,34 @@
+<h2>Listing schedules</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Node</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Value</th>
+      <th>Active</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for schedule <- @schedules do %>
+    <tr>
+      <td><%= schedule.node_id %></td>
+      <td><%= schedule.start_time %></td>
+      <td><%= schedule.end_time %></td>
+      <td><%= schedule.value %></td>
+      <td><%= schedule.active %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: schedule_path(@conn, :show, schedule), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: schedule_path(@conn, :edit, schedule), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: schedule_path(@conn, :delete, schedule), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New schedule", to: schedule_path(@conn, :new) %>

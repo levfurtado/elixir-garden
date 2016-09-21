@@ -3,6 +3,8 @@ defmodule ElixirgardenApi.NodeController do
 
   alias ElixirgardenApi.Node
   alias ElixirgardenApi.Repo
+  alias ElixirgardenApi.Schedule
+  alias ElixirgardenApi.Trigger
 
   def index(conn, _params) do
     nodes = Node |> Repo.all
@@ -79,13 +81,24 @@ defmodule ElixirgardenApi.NodeController do
   def output_panel(conn, _params) do
     changeset = Node.changeset(%Node{})
     all_plants = Node |> Node.all_plants |> Repo.all
+    allSchedules =  Schedule |> Schedule.allSchedules
+    allTriggers =  Trigger |> Trigger.allTriggers
     outputNodes = Node |> Node.singleMostRecent |> Node.outputNodes
     digitalOutputNodes = outputNodes |> Node.digitalNodes |> Repo.all
     analogOutputNodes = outputNodes |> Node.analogNodes |> Repo.all
+    activeSchedules = allSchedules |> Schedule.activeSchedules |> Repo.all
+    inactiveSchedules = allSchedules |> Schedule.inactiveSchedules |> Repo.all
+    activeTriggers = allTriggers |> Trigger.activeTriggers |> Repo.all
+    inactiveTriggers = allTriggers |> Trigger.inactiveTriggers |> Repo.all
     render(conn, :output_panel, changeset: changeset,
                                 digitalOutputNodes: digitalOutputNodes,
                                 analogOutputNodes: analogOutputNodes,
-                                all_plants: all_plants)
-  end
+                                all_plants: all_plants,
+                                inactiveSchedules: inactiveSchedules,
+                                activeSchedules: activeSchedules,
+                                inactiveTriggers: inactiveTriggers,
+                                activeTriggers: activeTriggers)
+    end
+
 
 end

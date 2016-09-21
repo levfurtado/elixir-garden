@@ -10,8 +10,8 @@ end
 
 {:ok, connection} = AMQP.Connection.open(host: "172.18.0.2")
 {:ok, channel} = AMQP.Channel.open(connection)
-AMQP.Queue.declare(channel, "hello")
-AMQP.Basic.consume(channel, "hello", nil, no_ack: true)
+AMQP.Queue.declare(channel, "schedule_change")
+AMQP.Basic.consume(channel, "schedule_change", nil, no_ack: true)
 IO.puts " [*] Waiting for messages. To exit press CTRL+C, CTRL+C"
 
 Receive.wait_for_messages
