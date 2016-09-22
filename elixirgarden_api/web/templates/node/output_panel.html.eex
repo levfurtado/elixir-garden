@@ -50,8 +50,8 @@
                     <div class="trigger-box" id="lower-bound-node-<%= plant.node_id %>"></div>
                     <input type="text" class="trigger-text" id="lower-bound-node-<%= plant.node_id %>-data"></input>
                     <h6>Upper Bound</h6>
-                    <div class="trigger-box" id="lower-bound-node-<%= plant.node_id %>"></div>
-                    <input type="text" class="trigger-text" id="lower-bound-node-<%= plant.node_id %>-data"></input>
+                    <div class="trigger-box" id="upper-bound-node-<%= plant.node_id %>"></div>
+                    <input type="text" class="trigger-text" id="upper-bound-node-<%= plant.node_id %>-data"></input>
                     <h6>Active</h6>
                     <div class="trigger-box" id="active-trigger-node-<%= plant.node_id %>"></div>
                     <input type="checkbox" class="trigger-text" id="active-trigger-node-<%= plant.node_id %>-data"></input>
@@ -229,8 +229,8 @@
                   <div class="trigger-box" id="lower-bound-node-<%= plant.node_id %>"></div>
                   <input type="text" class="trigger-text" id="lower-bound-node-<%= plant.node_id %>-data"></input>
                   <h6>Upper Bound</h6>
-                  <div class="trigger-box" id="lower-bound-node-<%= plant.node_id %>"></div>
-                  <input type="text" class="trigger-text" id="lower-bound-node-<%= plant.node_id %>-data"></input>
+                  <div class="trigger-box" id="upper-bound-node-<%= plant.node_id %>"></div>
+                  <input type="text" class="trigger-text" id="upper-bound-node-<%= plant.node_id %>-data"></input>
                   <h6>Active</h6>
                   <div class="trigger-box" id="active-trigger-node-<%= plant.node_id %>"></div>
                   <input type="checkbox" class="trigger-text" id="active-trigger-node-<%= plant.node_id %>-data"></input>

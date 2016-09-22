@@ -60,7 +60,6 @@ let triggerButton = $('.trigger-button')
 
 $(triggerButton).on("click", function() {
   //get node id
-  console.log("ddwdwdwdwdwdwsdsd");
   let submittedField = event.currentTarget.id
   let node_id_re = /trigger-button-node-(\d+)/;
   let node_id_matches = node_id_re.exec(submittedField)
