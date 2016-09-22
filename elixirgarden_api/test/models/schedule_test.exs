@@ -3,7 +3,16 @@ defmodule ElixirgardenApi.ScheduleTest do
 
   alias ElixirgardenApi.Schedule
 
-  @valid_attrs %{end_time: %{day: 17, hour: 14, min: 0, month: 4, sec: 0, year: 2010}, node_id: 42, start_time: %{day: 17, hour: 14, min: 0, month: 4, sec: 0, year: 2010}, value: "120.5"}
+  @valid_attrs %{
+    start_time: %{hour: 14, min: 0, sec: 0},
+    end_time: %{hour: 14, min: 0, sec: 0},
+    end_date: %{day: 17, month: 4, year: 2010},
+    start_date: %{day: 17, month: 4, year: 2010},
+    node_id: 42,
+    day_offset: 1,
+    value: "120.5"
+  }
+
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

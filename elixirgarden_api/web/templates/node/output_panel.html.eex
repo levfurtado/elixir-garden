@@ -21,16 +21,42 @@
                       <li><%= plant.ad_role %></li>
                     </ul>
                     <!-- block for sending messages to output nodes -->
+                    <h4>Scheduling</h4>
                     <h6>Start Time</h6>
                     <div class="schedule-box" id="start-time-node-<%= plant.node_id %>"></div>
-                    <input type="datetime-local" class="schedule-text" id="start-time-node-<%= plant.node_id %>-data"></input>
+                    <input type="time" class="schedule-text" id="start-time-node-<%= plant.node_id %>-data"></input>
                     <h6>End Time</h6>
                     <div class="schedule-box" id="end-time-node-<%= plant.node_id %>"></div>
-                    <input type="datetime-local" class="schedule-text" id="end-time-node-<%= plant.node_id %>-data"></input>
+                    <input type="time" class="schedule-text" id="end-time-node-<%= plant.node_id %>-data"></input>
+                    <h6>Start Date</h6>
+                    <div class="schedule-box" id="start-date-node-<%= plant.node_id %>"></div>
+                    <input type="date" class="schedule-text" id="start-date-node-<%= plant.node_id %>-data"></input>
+                    <h6>End Date</h6>
+                    <div class="schedule-box" id="end-date-node-<%= plant.node_id %>"></div>
+                    <input type="date" class="schedule-text" id="end-date-node-<%= plant.node_id %>-data"></input>
+                    <h6>Day Offset</h6>
+                    <div class="schedule-box" id="day-offset-node-<%= plant.node_id %>"></div>
+                    <input type="text" class="schedule-text" id="day-offset-node-<%= plant.node_id %>-data"></input>
+                    <h6>Value</h6>
+                    <div class="schedule-box" id="value-node-<%= plant.node_id %>"></div>
+                    <input type="text" class="schedule-text" id="value-node-<%= plant.node_id %>-data"></input>
                     <h6>Active</h6>
                     <div class="schedule-box" id="active-node-<%= plant.node_id %>"></div>
                     <input type="checkbox" class="schedule-text" id="active-node-<%= plant.node_id %>-data"></input>
                     <button class="schedule-button" id="schedule-button-node-<%= plant.node_id %>">Schedule</button>
+
+                    <h4>Triggers</h4>
+                    <h6>Lower Bound</h6>
+                    <div class="trigger-box" id="lower-bound-node-<%= plant.node_id %>"></div>
+                    <input type="text" class="trigger-text" id="lower-bound-node-<%= plant.node_id %>-data"></input>
+                    <h6>Upper Bound</h6>
+                    <div class="trigger-box" id="lower-bound-node-<%= plant.node_id %>"></div>
+                    <input type="text" class="trigger-text" id="lower-bound-node-<%= plant.node_id %>-data"></input>
+                    <h6>Active</h6>
+                    <div class="trigger-box" id="active-trigger-node-<%= plant.node_id %>"></div>
+                    <input type="checkbox" class="trigger-text" id="active-trigger-node-<%= plant.node_id %>-data"></input>
+                    <button class="trigger-button" id="trigger-button-node-<%= plant.node_id %>">Set Trigger</button>
+
                     <table class="table">
                       <caption>Active Schedules</caption>
                       <thead>
@@ -174,16 +200,42 @@
                     <li><%= plant.ad_role %></li>
                   </ul>
                   <!-- block for sending messages to output nodes -->
+                  <h4>Scheduling</h4>
                   <h6>Start Time</h6>
                   <div class="schedule-box" id="start-time-node-<%= plant.node_id %>"></div>
-                  <input type="datetime-local" class="schedule-text" id="start-time-node-<%= plant.node_id %>-data"></input>
+                  <input type="time" class="schedule-text" id="start-time-node-<%= plant.node_id %>-data"></input>
                   <h6>End Time</h6>
                   <div class="schedule-box" id="end-time-node-<%= plant.node_id %>"></div>
-                  <input type="datetime-local" class="schedule-text" id="end-time-node-<%= plant.node_id %>-data"></input>
+                  <input type="time" class="schedule-text" id="end-time-node-<%= plant.node_id %>-data"></input>
+                  <h6>Start Date</h6>
+                  <div class="schedule-box" id="start-date-node-<%= plant.node_id %>"></div>
+                  <input type="date" class="schedule-text" id="start-date-node-<%= plant.node_id %>-data"></input>
+                  <h6>End Date</h6>
+                  <div class="schedule-box" id="end-date-node-<%= plant.node_id %>"></div>
+                  <input type="date" class="schedule-text" id="end-date-node-<%= plant.node_id %>-data"></input>
+                  <h6>Day Offset</h6>
+                  <div class="schedule-box" id="day-offset-node-<%= plant.node_id %>"></div>
+                  <input type="text" class="schedule-text" id="day-offset-node-<%= plant.node_id %>-data"></input>
+                  <h6>Value</h6>
+                  <div class="schedule-box" id="value-node-<%= plant.node_id %>"></div>
+                  <input type="text" class="schedule-text" id="value-node-<%= plant.node_id %>-data"></input>
                   <h6>Active</h6>
                   <div class="schedule-box" id="active-node-<%= plant.node_id %>"></div>
                   <input type="checkbox" class="schedule-text" id="active-node-<%= plant.node_id %>-data"></input>
                   <button class="schedule-button" id="schedule-button-node-<%= plant.node_id %>">Schedule</button>
+
+                  <h4>Triggers</h4>
+                  <h6>Lower Bound</h6>
+                  <div class="trigger-box" id="lower-bound-node-<%= plant.node_id %>"></div>
+                  <input type="text" class="trigger-text" id="lower-bound-node-<%= plant.node_id %>-data"></input>
+                  <h6>Upper Bound</h6>
+                  <div class="trigger-box" id="lower-bound-node-<%= plant.node_id %>"></div>
+                  <input type="text" class="trigger-text" id="lower-bound-node-<%= plant.node_id %>-data"></input>
+                  <h6>Active</h6>
+                  <div class="trigger-box" id="active-trigger-node-<%= plant.node_id %>"></div>
+                  <input type="checkbox" class="trigger-text" id="active-trigger-node-<%= plant.node_id %>-data"></input>
+                  <button class="trigger-button" id="trigger-button-node-<%= plant.node_id %>">Set Trigger</button>
+
                   <table class="table">
                     <caption>Active Schedules</caption>
                     <thead>

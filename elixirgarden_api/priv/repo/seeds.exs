@@ -33,6 +33,7 @@ defmodule ElixirgardenApi.DatabaseSeeder do
   @second_list (0..59)
   @upper_bound_list (50..75)
   @lower_bound_list (0..25)
+  @day_offset_list (0..7)
 
   def insert_trigger(id) do
     Repo.insert! %Trigger{
@@ -47,9 +48,12 @@ defmodule ElixirgardenApi.DatabaseSeeder do
     Repo.insert! %Schedule{
       node_id: id,
       value: Enum.random(@value_list) / 1,
+      day_offset: Enum.random(@day_offset_list),
       active: Enum.random([true, false]),
-      start_time: Ecto.DateTime.utc(),
-      end_time: Ecto.DateTime.utc()
+      start_time: Ecto.Time.utc(),
+      end_time: Ecto.Time.utc(),
+      start_date: Ecto.Date.utc(),
+      end_date: Ecto.Date.utc()
     }
   end
 

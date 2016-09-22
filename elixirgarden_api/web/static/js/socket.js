@@ -53,6 +53,54 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 
 socket.connect()
 
+///Trigger Channel
+let triggerChannel = socket.channel('trigger_room:lobby', {})
+let triggerInput = $('.trigger-text')
+let triggerButton = $('.trigger-button')
+
+$(triggerButton).on("click", function() {
+  //get node id
+  console.log("ddwdwdwdwdwdwsdsd");
+  let submittedField = event.currentTarget.id
+  let node_id_re = /trigger-button-node-(\d+)/;
+  let node_id_matches = node_id_re.exec(submittedField)
+  let node_id_val = node_id_matches[1]
+  let lower_bound_elem = "#lower-bound-node-" + node_id_val + "-data"
+  let lower_bound_input = $(lower_bound_elem)
+  let upper_bound_elem = "#upper-bound-node-" + node_id_val + "-data"
+  let upper_bound_input = $(upper_bound_elem)
+  let active_elem = "#active-trigger-node-" + node_id_val + "-data"
+  let active_input = $(active_elem)
+  let trigger_msg_body = new Object
+  trigger_msg_body.node_id =  node_id_val
+  trigger_msg_body.lower_bound = lower_bound_input.val()
+  trigger_msg_body.upper_bound = upper_bound_input.val()
+  trigger_msg_body.active = active_input.val()
+
+  let jsonified_msg = JSON.stringify(trigger_msg_body)
+  //sends out the actual message
+  triggerChannel.push("trigger_change", {
+    body: jsonified_msg
+  })
+  //clears the field that just typed that stuff in
+  lower_bound_input.val("")
+  upper_bound_input.val("")
+  active_input.val("")
+})
+
+triggerChannel.on("trigger_change", payload => {
+  console.log("Message Ack");
+  let message_object = JSON.parse(payload.body)
+  triggerButton.html("")
+  triggerButton.append( `<br/>[${Date()}] Node Id: ${message_object.node_id}` )
+  console.log("payload, %o", payload);
+})
+
+triggerChannel.join()
+  .receive("ok", resp => { console.log("Joined successfully", resp) })
+  .receive("error", resp => { console.log("Unable to join", resp) })
+
+
 ////Scheduling channel
 let scheduleChannel = socket.channel('schedule_room:lobby', {})
 let scheduleInput = $('.schedule-text')
@@ -68,31 +116,44 @@ $(scheduleButton).on("click", function() {
   let end_time_input = $(end_time_elem)
   let start_time_elem = "#start-time-node-" + node_id_val + "-data"
   let start_time_input = $(start_time_elem)
+  let end_date_elem = "#end-date-node-" + node_id_val + "-data"
+  let end_date_input = $(end_date_elem)
+  let start_date_elem = "#start-date-node-" + node_id_val + "-data"
+  let start_date_input = $(start_date_elem)
+  let value_elem = "#value-node-" + node_id_val + "-data"
+  let value_input = $(value_elem)
+  let day_offset_elem = "#day_offset-node-" + node_id_val + "-data"
+  let day_offset_input = $(day_offset_elem)
   let active_elem = "#active-node-" + node_id_val + "-data"
   let active_input = $(active_elem)
   let schedule_msg_body = new Object
   schedule_msg_body.node_id =  node_id_val
   schedule_msg_body.start_time = start_time_input.val()
   schedule_msg_body.end_time = end_time_input.val()
+  schedule_msg_body.start_date = start_date_input.val()
+  schedule_msg_body.end_date = end_date_input.val()
+  schedule_msg_body.schedule_value = value_input.val()
+  schedule_msg_body.day_offset = day_offset_input.val()
   schedule_msg_body.active = active_input.val()
 
   let jsonified_msg = JSON.stringify(schedule_msg_body)
   //sends out the actual message
-  debugger
   scheduleChannel.push("schedule_change", {
     body: jsonified_msg
   })
   //clears the field that just typed that stuff in
   start_time_input.val("")
   end_time_input.val("")
+  start_date_input.val("")
+  end_date_input.val("")
   active_input.val("")
 })
 
 scheduleChannel.on("schedule_change", payload => {
+  console.log("Message Ack");
   let message_object = JSON.parse(payload.body)
   scheduleButton.html("")
   scheduleButton.append( `<br/>[${Date()}] Node Id: ${message_object.node_id}` )
-  console.log("Message Ack");
   console.log("payload, %o", payload);
 })
 
@@ -106,8 +167,6 @@ scheduleChannel.join()
 let outputNodeChannel = socket.channel("output_node_room:lobby", {})
 let outputNodeInput = $(".output-node-text")
 let outputNodeContainer = $(".output-node")
-
-
 
 outputNodeInput.on("keypress", event => {
   if(event.keyCode === 13){

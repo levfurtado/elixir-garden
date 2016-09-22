@@ -4,8 +4,11 @@ defmodule ElixirgardenApi.Repo.Migrations.CreateSchedule do
   def change do
     create table(:schedules) do
       add :node_id, :integer
-      add :start_time, :datetime
-      add :end_time, :datetime
+      add :start_time, :time
+      add :end_time, :time
+      add :start_date, :date
+      add :end_date, :date
+      add :day_offset, :integer
       add :value, :float
       add :active, :boolean
 

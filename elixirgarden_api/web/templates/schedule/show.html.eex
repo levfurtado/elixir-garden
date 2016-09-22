@@ -18,6 +18,21 @@
   </li>
 
   <li>
+    <strong>Start date:</strong>
+    <%= @schedule.start_date %>
+  </li>
+
+  <li>
+    <strong>End date:</strong>
+    <%= @schedule.end_date %>
+  </li>
+
+  <li>
+    <strong>Day Offset:</strong>
+    <%= @schedule.day_offset %>
+  </li>
+
+  <li>
     <strong>Value:</strong>
     <%= @schedule.value %>
   </li>

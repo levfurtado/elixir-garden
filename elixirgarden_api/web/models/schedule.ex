@@ -2,8 +2,11 @@ defmodule ElixirgardenApi.Schedule do
   use ElixirgardenApi.Web, :model
 
   schema "schedules" do
-    field :start_time, Ecto.DateTime
-    field :end_time, Ecto.DateTime
+    field :start_time, Ecto.Time
+    field :end_time, Ecto.Time
+    field :start_date, Ecto.Date
+    field :end_date, Ecto.Date
+    field :day_offset, :integer
     field :value, :float
     field :active, :boolean
 
@@ -32,7 +35,7 @@ defmodule ElixirgardenApi.Schedule do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:node_id, :start_time, :end_time, :value, :active])
-    |> validate_required([:node_id, :start_time, :end_time, :value, :active])
+    |> cast(params, [:node_id, :start_time, :end_time, :start_date, :end_date, :value, :day_offset, :active])
+    |> validate_required([:node_id, :start_time, :end_time, :start_date, :end_date, :value, :day_offset, :active])
   end
 end
