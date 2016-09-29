@@ -80,6 +80,8 @@ defmodule ElixirgardenApi.NodeController do
 
   def output_panel(conn, _params) do
     changeset = Node.changeset(%Node{})
+    trigger_changeset = Trigger.changeset(%Trigger{})
+    schedule_changeset = Schedule.changeset(%Schedule{})
     all_plants = Node |> Node.all_plants |> Repo.all
     allSchedules =  Schedule |> Schedule.allSchedules
     allTriggers =  Trigger |> Trigger.allTriggers
@@ -91,6 +93,8 @@ defmodule ElixirgardenApi.NodeController do
     activeTriggers = allTriggers |> Trigger.activeTriggers |> Repo.all
     inactiveTriggers = allTriggers |> Trigger.inactiveTriggers |> Repo.all
     render(conn, :output_panel, changeset: changeset,
+                                schedule_changeset: schedule_changeset,
+                                trigger_changeset: trigger_changeset,
                                 digitalOutputNodes: digitalOutputNodes,
                                 analogOutputNodes: analogOutputNodes,
                                 all_plants: all_plants,

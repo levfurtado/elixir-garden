@@ -1,8 +1,12 @@
+alias ElixirgardenApi.Trigger
+
 defmodule Receive do
   def wait_for_messages do
     receive do
       {:basic_deliver, payload, _meta} ->
         IO.puts " [x] Received #{payload}"
+        IO.puts Poison.decode!( payload, as: %Trigger{} )
+
         wait_for_messages
     end
   end

@@ -7,20 +7,38 @@
 
   <div class="form-group">
     <%= label f, :node_id, class: "control-label" %>
-    <%= number_input f, :node_id, class: "form-control" %>
+    <%= number_input f, :node_id, value: @node_id, class: "form-control" %>
     <%= error_tag f, :node_id %>
   </div>
 
   <div class="form-group">
-    <%= label f, :group, class: "control-label" %>
-    <%= text_input f, :group, class: "form-control" %>
-    <%= error_tag f, :group %>
+    <%= label f, :start_time, class: "control-label" %>
+    <%= time_select f, :start_time, class: "form-control" %>
+    <%= error_tag f, :start_time %>
   </div>
 
   <div class="form-group">
-    <%= label f, :function, class: "control-label" %>
-    <%= text_input f, :function, class: "form-control" %>
-    <%= error_tag f, :function %>
+    <%= label f, :end_time, class: "control-label" %>
+    <%= time_select f, :end_time, class: "form-control" %>
+    <%= error_tag f, :end_time %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :start_date, class: "control-label" %>
+    <%= date_select f, :start_date, class: "form-control" %>
+    <%= error_tag f, :start_date %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :end_date, class: "control-label" %>
+    <%= date_select f, :end_date, class: "form-control" %>
+    <%= error_tag f, :end_date %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :day_offset, class: "control-label" %>
+    <%= number_input f, :day_offset, class: "form-control" %>
+    <%= error_tag f, :day_offset %>
   </div>
 
   <div class="form-group">
@@ -29,50 +47,10 @@
     <%= error_tag f, :value %>
   </div>
 
-  <div class="row">
-    <div class="col-lg-6">
-      <p>True means input</p>
-    </div>
-    <div class="col-lg-6">
-      <p>False means output</p>
-    </div>
-  </div>
   <div class="form-group">
-    <%= label f, :io_role, class: "control-label" %>
-    <%= checkbox f, :io_role, class: "form-control" %>
-    <%= error_tag f, :io_role %>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-6">
-      <p>True means analog</p>
-    </div>
-    <div class="col-lg-6">
-      <p>False means digital</p>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= label f, :ad_role, class: "control-label" %>
-    <%= checkbox f, :ad_role, class: "form-control" %>
-    <%= error_tag f, :ad_role %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :location_x, class: "control-label" %>
-    <%= number_input f, :location_x, class: "form-control" %>
-    <%= error_tag f, :location_x %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :location_y, class: "control-label" %>
-    <%= number_input f, :location_y, class: "form-control" %>
-    <%= error_tag f, :location_y %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :plant_id, class: "control-label" %>
-    <%= number_input f, :plant_id, class: "form-control" %>
-    <%= error_tag f, :plant_id %>
+    <%= label f, :active, class: "control-label" %>
+    <%= checkbox f, :active, class: "form-control" %>
+    <%= error_tag f, :active %>
   </div>
 
   <div class="form-group">

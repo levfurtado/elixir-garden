@@ -45,6 +45,12 @@
                     <input type="checkbox" class="schedule-text" id="active-node-<%= plant.node_id %>-data"></input>
                     <button class="schedule-button" id="schedule-button-node-<%= plant.node_id %>">Schedule</button>
 
+                    <div id="<%= plant.node_id %>-schedule-form">
+                      <%= render "schedule_form.html", node_id: plant.node_id,
+                                                      changeset: @schedule_changeset,
+                                                      action: schedule_path(@conn, :create) %>
+                    </div>
+
                     <h4>Triggers</h4>
                     <h6>Lower Bound</h6>
                     <div class="trigger-box" id="lower-bound-node-<%= plant.node_id %>"></div>
@@ -56,6 +62,12 @@
                     <div class="trigger-box" id="active-trigger-node-<%= plant.node_id %>"></div>
                     <input type="checkbox" class="trigger-text" id="active-trigger-node-<%= plant.node_id %>-data"></input>
                     <button class="trigger-button" id="trigger-button-node-<%= plant.node_id %>">Set Trigger</button>
+
+                    <div id="<%= plant.node_id %>-trigger-form">
+                      <%= render "trigger_form.html", node_id: plant.node_id,
+                                                      changeset: @trigger_changeset,
+                                                      action: trigger_path(@conn, :create) %>
+                    </div>
 
                     <table class="table">
                       <caption>Active Schedules</caption>
@@ -163,8 +175,8 @@
                       <%= for inactiveTrigger <- @inactiveTriggers do %>
                         <%= if inactiveTrigger.node_id == plant.node_id do %>
                           <tr>
-                            <td><%= inactiveTrigger.upper_bound %></td>
                             <td><%= inactiveTrigger.lower_bound %></td>
+                            <td><%= inactiveTrigger.upper_bound %></td>
                           </tr>
                           <tr>
                             <td>

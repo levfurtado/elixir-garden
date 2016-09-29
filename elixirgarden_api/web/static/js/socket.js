@@ -55,15 +55,11 @@ socket.connect()
 
 ///Trigger Channel
 let triggerChannel = socket.channel('trigger_room:lobby', {})
-let triggerInput = $('.trigger-text')
 let triggerButton = $('.trigger-button')
 
 $(triggerButton).on("click", function() {
   //get node id
-  let submittedField = event.currentTarget.id
-  let node_id_re = /trigger-button-node-(\d+)/;
-  let node_id_matches = node_id_re.exec(submittedField)
-  let node_id_val = node_id_matches[1]
+  let node_id = event.currentTarget.id
   let lower_bound_elem = "#lower-bound-node-" + node_id_val + "-data"
   let lower_bound_input = $(lower_bound_elem)
   let upper_bound_elem = "#upper-bound-node-" + node_id_val + "-data"
