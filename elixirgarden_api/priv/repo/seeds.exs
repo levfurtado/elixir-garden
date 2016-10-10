@@ -50,8 +50,8 @@ defmodule ElixirgardenApi.DatabaseSeeder do
       value: Enum.random(@value_list) / 1,
       day_offset: Enum.random(@day_offset_list),
       active: Enum.random([true, false]),
-      start_time: Ecto.Time.utc(),
-      end_time: Ecto.Time.utc(),
+      start_time: Time.utc(),
+      end_time: Time.utc(),
       start_date: Ecto.Date.utc(),
       end_date: Ecto.Date.utc()
     }
@@ -93,5 +93,5 @@ end
 
 (1..100) |> Enum.each(fn id -> ElixirgardenApi.DatabaseSeeder.insert_metric_node(id) end)
 (101..200) |> Enum.each(fn id -> ElixirgardenApi.DatabaseSeeder.insert_action_node(id) end)
-(1..200) |> Enum.each(fn id -> ElixirgardenApi.DatabaseSeeder.insert_schedule(id) end)
+# (1..200) |> Enum.each(fn id -> ElixirgardenApi.DatabaseSeeder.insert_schedule(id) end)
 (1..200) |> Enum.each(fn id -> ElixirgardenApi.DatabaseSeeder.insert_trigger(id) end)

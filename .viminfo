@@ -18,34 +18,69 @@
 # Input Line History (newest to oldest):
 
 # Registers:
-""1	LINE	0
-	  # Dependencies can be Hex packages:
+"1	LINE	0
+	
 "2	LINE	0
-	end
+	  # Dependencies can be Hex packages:
 "3	LINE	0
-	  end
+	end
 "4	LINE	0
-	    []
+	  end
 "5	LINE	0
-	  defp deps do
+	    []
 "6	LINE	0
-	  # Type "mix help deps" for more examples and options
+	  defp deps do
 "7	LINE	0
-	  #
+	  # Type "mix help deps" for more examples and options
 "8	LINE	0
-	  #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1.0"}
-"9	LINE	0
 	  #
-"-	CHAR	0
-	D
+"9	LINE	0
+	  #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1.0"}
+""-	CHAR	0
+	h
 
 # File marks:
-'0  32  86  ~/elixirgarden_api/testrabbit/mix.exs
-'1  30  4  ~/elixirgarden_api/testrabbit/mix.exs
-'2  19  0  ~/elixirgarden_api/testrabbit/mix.exs
-'3  20  6  ~/elixirgarden_api/testrabbit/mix.exs
+'0  1  89  ~/elixirgarden_api/.iex.exs
+'1  32  86  ~/elixirgarden_api/testrabbit/mix.exs
+'2  30  4  ~/elixirgarden_api/testrabbit/mix.exs
+'3  19  0  ~/elixirgarden_api/testrabbit/mix.exs
+'4  20  6  ~/elixirgarden_api/testrabbit/mix.exs
 
 # Jumplist (newest first):
+-'  1  89  ~/elixirgarden_api/.iex.exs
+-'  32  86  ~/elixirgarden_api/testrabbit/mix.exs
+-'  1  0  ~/elixirgarden_api/testrabbit/mix.exs
+-'  30  4  ~/elixirgarden_api/testrabbit/mix.exs
+-'  19  0  ~/elixirgarden_api/testrabbit/mix.exs
+-'  20  6  ~/elixirgarden_api/testrabbit/mix.exs
+-'  34  6  ~/elixirgarden_api/testrabbit/mix.exs
+-'  35  0  ~/elixirgarden_api/testrabbit/mix.exs
+-'  21  2  ~/elixirgarden_api/testrabbit/mix.exs
+-'  22  2  ~/elixirgarden_api/testrabbit/mix.exs
+-'  31  6  ~/elixirgarden_api/testrabbit/mix.exs
+-'  33  6  ~/elixirgarden_api/testrabbit/mix.exs
+-'  32  86  ~/elixirgarden_api/testrabbit/mix.exs
+-'  1  0  ~/elixirgarden_api/testrabbit/mix.exs
+-'  30  4  ~/elixirgarden_api/testrabbit/mix.exs
+-'  19  0  ~/elixirgarden_api/testrabbit/mix.exs
+-'  20  6  ~/elixirgarden_api/testrabbit/mix.exs
+-'  34  6  ~/elixirgarden_api/testrabbit/mix.exs
+-'  35  0  ~/elixirgarden_api/testrabbit/mix.exs
+-'  21  2  ~/elixirgarden_api/testrabbit/mix.exs
+-'  22  2  ~/elixirgarden_api/testrabbit/mix.exs
+-'  31  6  ~/elixirgarden_api/testrabbit/mix.exs
+-'  33  6  ~/elixirgarden_api/testrabbit/mix.exs
+-'  32  86  ~/elixirgarden_api/testrabbit/mix.exs
+-'  1  0  ~/elixirgarden_api/testrabbit/mix.exs
+-'  30  4  ~/elixirgarden_api/testrabbit/mix.exs
+-'  19  0  ~/elixirgarden_api/testrabbit/mix.exs
+-'  20  6  ~/elixirgarden_api/testrabbit/mix.exs
+-'  34  6  ~/elixirgarden_api/testrabbit/mix.exs
+-'  35  0  ~/elixirgarden_api/testrabbit/mix.exs
+-'  21  2  ~/elixirgarden_api/testrabbit/mix.exs
+-'  22  2  ~/elixirgarden_api/testrabbit/mix.exs
+-'  31  6  ~/elixirgarden_api/testrabbit/mix.exs
+-'  33  6  ~/elixirgarden_api/testrabbit/mix.exs
 -'  32  86  ~/elixirgarden_api/testrabbit/mix.exs
 -'  1  0  ~/elixirgarden_api/testrabbit/mix.exs
 -'  30  4  ~/elixirgarden_api/testrabbit/mix.exs
@@ -59,6 +94,13 @@
 -'  33  6  ~/elixirgarden_api/testrabbit/mix.exs
 
 # History of marks within files (newest to oldest):
+
+> ~/elixirgarden_api/.iex.exs
+	"	1	89
+	^	1	90
+	.	1	89
+	+	2	0
+	+	1	89
 
 > ~/elixirgarden_api/testrabbit/mix.exs
 	"	32	86

@@ -104,6 +104,7 @@ RUN addgroup --gid $APP_GID app && adduser --uid $APP_UID --gid $APP_GID --disab
 USER app
 WORKDIR /home/app/elixirgarden_api
 COPY elixirgarden_api /home/app/elixirgarden_api
+RUN export TERM=vt100
 USER root
 RUN chown -R app:app /home/app/elixirgarden_api
 

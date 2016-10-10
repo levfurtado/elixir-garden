@@ -2,10 +2,10 @@ defmodule ElixirgardenApi.Schedule do
   use ElixirgardenApi.Web, :model
 
   schema "schedules" do
-    field :start_time, Ecto.Time
-    field :end_time, Ecto.Time
-    field :start_date, Ecto.Date
-    field :end_date, Ecto.Date
+    field :start_time, Timex.Ecto.Time
+    field :end_time, Timex.Ecto.Time
+    field :start_date, Timex.Ecto.Date
+    field :end_date, Timex.Ecto.Date
     field :day_offset, :integer
     field :value, :float
     field :active, :boolean
@@ -28,6 +28,16 @@ defmodule ElixirgardenApi.Schedule do
   def inactiveSchedules(query) do
     from s in query,
     where: s.active == false
+  end
+
+  def in_time_range(query, time) do
+    from s in query,
+    where: s.start_time <= ^time and s.end_time >= ^time
+  end
+
+  def in_date_range(query, date) do
+    from s in query,
+    where: s.start_date <= ^date and s.end_date >= ^date
   end
 
   @doc """

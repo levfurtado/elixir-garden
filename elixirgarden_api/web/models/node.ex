@@ -52,9 +52,22 @@ defmodule ElixirgardenApi.Node do
     where: n.ad_role == true
   end
 
-  def singleMostRecent(query) do
+  def single_most_recent_by_plant(query) do
     from n in query,
     distinct: [n.plant_id, n.function],
+    order_by: [desc: n.inserted_at]
+  end
+
+  def most_recent_nodes(query) do
+    from n in query,
+    distinct: n.node_id,
+    order_by: [desc: n.inserted_at]
+  end
+
+  def most_recent_node(query, node_id) do
+    from n in query,
+    distinct: n.node_id,
+    where: n.node_id == ^node_id,
     order_by: [desc: n.inserted_at]
   end
 

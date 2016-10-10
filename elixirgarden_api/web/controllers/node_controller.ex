@@ -68,10 +68,10 @@ defmodule ElixirgardenApi.NodeController do
 
   def plants(conn, _params) do
     all_plants = Node |> Node.all_plants |> Repo.all
-    outputNodes = Node |> Node.singleMostRecent |> Node.outputNodes
+    outputNodes = Node |> Node.single_most_recent_by_plant |> Node.outputNodes
     digitalOutputNodes = outputNodes |> Node.digitalNodes |> Repo.all
     analogOutputNodes = outputNodes |> Node.analogNodes |> Repo.all
-    inputNodes = Node |> Node.singleMostRecent |> Node.inputNodes |> Repo.all
+    inputNodes = Node |> Node.single_most_recent_by_plant |> Node.inputNodes |> Repo.all
     render(conn, :plants, digitalOutputNodes: digitalOutputNodes,
                           analogOutputNodes: analogOutputNodes,
                           inputNodes: inputNodes,
@@ -85,7 +85,7 @@ defmodule ElixirgardenApi.NodeController do
     all_plants = Node |> Node.all_plants |> Repo.all
     allSchedules =  Schedule |> Schedule.allSchedules
     allTriggers =  Trigger |> Trigger.allTriggers
-    outputNodes = Node |> Node.singleMostRecent |> Node.outputNodes
+    outputNodes = Node |> Node.single_most_recent_by_plant |> Node.outputNodes
     digitalOutputNodes = outputNodes |> Node.digitalNodes |> Repo.all
     analogOutputNodes = outputNodes |> Node.analogNodes |> Repo.all
     activeSchedules = allSchedules |> Schedule.activeSchedules |> Repo.all

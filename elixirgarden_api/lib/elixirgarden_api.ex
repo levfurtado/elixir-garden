@@ -14,6 +14,7 @@ defmodule ElixirgardenApi do
       supervisor(ElixirgardenApi.Endpoint, []),
       # Start your own worker by calling: ElixirgardenApi.Worker.start_link(arg1, arg2, arg3)
       # worker(ElixirgardenApi.Worker, [arg1, arg2, arg3]),
+      worker(ElixirgardenApi.ConditionHandler, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
