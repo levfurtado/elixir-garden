@@ -27,6 +27,24 @@ defmodule ElixirgardenApi.ScheduleController do
     ecto_time_map
   end
 
+  def client_to_server_time(client_tz, client_time, client_date) do
+    offset = Timex.Timezone.get(client_tz)
+    |> Timex.Timezone.total_offset
+    constructed_datetime = Timex.set(Timex.now, year: String.to_integer(client_date["year"]),
+                                          month: String.to_integer(client_date["month"]),
+                                          day: String.to_integer(client_date["day"]),
+                                          hour: String.to_integer(client_time["hour"]),
+                                          minute: String.to_integer(client_time["minute"]),
+                                          second: 0)
+    duration_offset = offset |> Timex.Duration.from_seconds |> Timex.Duration.abs
+    if offset >= 0 do
+      new_datetime = Timex.add(constructed_datetime, duration_offset)
+    else
+      new_datetime = Timex.subtract(constructed_datetime, duration_offset)
+    end
+    IEx.pry
+  end
+
   def new(conn, _params) do
     changeset = Schedule.changeset(%Schedule{})
     render(conn, "new.html", changeset: changeset)
@@ -34,7 +52,7 @@ defmodule ElixirgardenApi.ScheduleController do
 
   def create(conn, %{"schedule" => schedule_params}) do
     changeset = Schedule.changeset(%Schedule{}, schedule_params)
-
+    client_to_server_time( schedule_params["timezone"], schedule_params["start_time"], schedule_params["start_date"])
     case Repo.insert(changeset) do
       {:ok, _schedule} ->
         conn

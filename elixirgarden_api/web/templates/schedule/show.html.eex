@@ -28,6 +28,11 @@
   </li>
 
   <li>
+    <strong>Timezone:</strong>
+    <%= @schedule.timezone %>
+  </li>
+
+  <li>
     <strong>Day Offset:</strong>
     <%= @schedule.day_offset %>
   </li>
