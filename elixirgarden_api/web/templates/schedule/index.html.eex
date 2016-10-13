@@ -9,7 +9,7 @@
       <th>Start Date</th>
       <th>End Date</th>
       <th>Day Offset</th>
-      <th>Timezone</th>
+      <th>Timezone Offset</th>
       <th>Value</th>
       <th>Active</th>
 
@@ -25,7 +25,7 @@
       <td><%= schedule.start_date %></td>
       <td><%= schedule.end_date %></td>
       <td><%= schedule.day_offset %></td>
-      <td><%= schedule.timezone %></td>
+      <td><%= schedule.timezone_offset %></td>
       <td><%= schedule.value %></td>
       <td><%= schedule.active %></td>
 

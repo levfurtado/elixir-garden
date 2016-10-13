@@ -8,7 +8,7 @@ defmodule ElixirgardenApi.Repo.Migrations.CreateSchedule do
       add :end_time, :time
       add :start_date, :date
       add :end_date, :date
-      add :timezone, :string
+      add :timezone_offset, :string
       add :day_offset, :integer
       add :value, :float
       add :active, :boolean

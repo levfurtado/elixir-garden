@@ -6,7 +6,7 @@ defmodule ElixirgardenApi.Schedule do
     field :end_time, Timex.Ecto.Time
     field :start_date, Timex.Ecto.Date
     field :end_date, Timex.Ecto.Date
-    field :timezone, :string
+    field :timezone_offset, :string
     field :day_offset, :integer
     field :value, :float
     field :active, :boolean
@@ -46,7 +46,7 @@ defmodule ElixirgardenApi.Schedule do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:node_id, :start_time, :end_time, :start_date, :end_date, :timezone, :value, :day_offset, :active])
-    |> validate_required([:node_id, :start_time, :end_time, :start_date, :end_date, :timezone, :value, :day_offset, :active])
+    |> cast(params, [:node_id, :start_time, :end_time, :start_date, :end_date, :timezone_offset, :value, :day_offset, :active])
+    |> validate_required([:node_id, :start_time, :end_time, :start_date, :end_date, :timezone_offset, :value, :day_offset, :active])
   end
 end

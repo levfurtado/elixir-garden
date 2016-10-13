@@ -1,5 +1,5 @@
+require IEx
 defmodule ElixirgardenApi.ScheduleController do
-  require IEx
   use ElixirgardenApi.Web, :controller
 
   alias ElixirgardenApi.Schedule
@@ -28,21 +28,28 @@ defmodule ElixirgardenApi.ScheduleController do
   end
 
   def client_to_server_time(client_tz, client_time, client_date) do
-    offset = Timex.Timezone.get(client_tz)
-    |> Timex.Timezone.total_offset
     constructed_datetime = Timex.set(Timex.now, year: String.to_integer(client_date["year"]),
                                           month: String.to_integer(client_date["month"]),
                                           day: String.to_integer(client_date["day"]),
                                           hour: String.to_integer(client_time["hour"]),
                                           minute: String.to_integer(client_time["minute"]),
                                           second: 0)
-    duration_offset = offset |> Timex.Duration.from_seconds |> Timex.Duration.abs
-    if offset >= 0 do
+    duration_offset = client_tz
+                      |> String.to_integer
+                      |> Timex.Duration.from_minutes
+                      |> Timex.Duration.abs
+    if client_tz < 0 do
       new_datetime = Timex.add(constructed_datetime, duration_offset)
     else
       new_datetime = Timex.subtract(constructed_datetime, duration_offset)
     end
-    IEx.pry
+    erl_datetime = new_datetime |> Timex.to_erl
+    {erl_date, erl_time} = erl_datetime
+    new_time = Time.from_erl!(erl_time)
+    new_date = Timex.to_date(erl_date)
+    time_map = %{"hour" => new_time.hour, "minute" => new_time.minute}
+    date_map = %{"day" => new_date.day, "month" => new_date.month, "year" => new_date.year }
+    datetime_map = Map.put(%{}, :time, time_map) |> Map.put(:date, date_map)
   end
 
   def new(conn, _params) do
@@ -51,8 +58,13 @@ defmodule ElixirgardenApi.ScheduleController do
   end
 
   def create(conn, %{"schedule" => schedule_params}) do
-    changeset = Schedule.changeset(%Schedule{}, schedule_params)
-    client_to_server_time( schedule_params["timezone"], schedule_params["start_time"], schedule_params["start_date"])
+    start_datetime = client_to_server_time( schedule_params["timezone_offset"], schedule_params["start_time"], schedule_params["start_date"])
+    end_datetime = client_to_server_time( schedule_params["timezone_offset"], schedule_params["end_time"], schedule_params["end_date"])
+    new_params = Map.put(schedule_params, "start_time", start_datetime.time)
+              |> Map.put("start_date", start_datetime.date)
+              |> Map.put("end_time", end_datetime.time)
+              |> Map.put("end_date", end_datetime.date)
+    changeset = Schedule.changeset(%Schedule{}, new_params)
     case Repo.insert(changeset) do
       {:ok, _schedule} ->
         conn

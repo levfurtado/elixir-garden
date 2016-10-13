@@ -19,3 +19,11 @@ import "phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 import socket from "./socket"
+import { TzInserter } from "./timezone_inserter"
+
+export var App = {
+  run: function(){
+    console.log("hry hey")
+    TzInserter.insertTz()
+  }
+}

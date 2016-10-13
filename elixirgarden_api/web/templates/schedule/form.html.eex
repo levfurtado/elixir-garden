@@ -36,9 +36,9 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :timezone, class: "control-label" %>
-    <%= text_input f, :timezone, value: "EDT", class: "form-control" %>
-    <%= error_tag f, :timezone %>
+    <%= label f, :timezone_offset, class: "control-label" %>
+    <%= text_input f, :timezone_offset, value: "240", class: "form-control" %>
+    <%= error_tag f, :timezone_offset %>
   </div>
 
   <div class="form-group">

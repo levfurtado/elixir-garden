@@ -17,6 +17,7 @@ defmodule ElixirgardenApi.ScheduleHandler do
       for pschedule <- pertinent_schedules do
         send_schedule_action(pschedule.node_id, pschedule.value)
       end
+
       day_offset = schedule.day_offset
       start_time_erl = schedule.start_time |> Duration.to_erl
       start_date_erl = schedule.start_date |> Timex.to_erl
@@ -24,6 +25,7 @@ defmodule ElixirgardenApi.ScheduleHandler do
       # calc_day_offset(day_offset, start_datetime_erl, reference_date)
 
       next_date = Timex.shift(reference_date, days: day_offset) |> Timex.to_erl
+      IEx.pry
       #subtract scheduled time from the time at this moment
       # duration_in_mils = difference_secs * 1000
       #set timer for first time schedules (doesnt repeat)
@@ -41,12 +43,12 @@ defmodule ElixirgardenApi.ScheduleHandler do
   end
 
   def calc_day_offset(offset, start_date, time_now) do
+    IEx.pry
     day_difference = Timex.diff(start_date, time_now, :days)
     day_modulus = rem day_difference, (offset + 1)
     if day_modulus == 0 do
       IO.puts "this is the day #{offset}"
       IO.puts "this is the offset #{day_modulus}"
-      IEx.pry
     end
   end
   #

@@ -28,8 +28,8 @@
   </li>
 
   <li>
-    <strong>Timezone:</strong>
-    <%= @schedule.timezone %>
+    <strong>Timezone offset:</strong>
+    <%= @schedule.timezone_offset %>
   </li>
 
   <li>
